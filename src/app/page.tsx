@@ -11,10 +11,7 @@ export default function Root() {
       <div className="container">
         <div className="flex items-center justify-center relative text-center py-12 px-12 h-full w-full">
           <div className="">
-            <a
-              href="index.html"
-              className="flex items-center justify-center mb-10"
-            >
+            <a href="\" className="flex items-center justify-center mb-10">
               <Image
                 src="/images/logo.png"
                 width={100}
@@ -25,7 +22,7 @@ export default function Root() {
             <span className="text-white font-medium bg-white/20 py-[5px] px-4 rounded-md capitalize">
               Our Website Is
             </span>
-            <h1 className="lg:text-6xl text-4xl font-extrabold text-white capitalize my-8">
+            <h1 className="lg:text-6xl text-4xl font-extrabold !text-white capitalize my-8">
               coming soon
             </h1>
             <div className="flex justify-center">

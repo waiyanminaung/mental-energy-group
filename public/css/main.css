@@ -1488,10 +1488,6 @@ h6 {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .main-menu .main-menu__list,
@@ -3470,12 +3466,13 @@ h6 {
 .faq-one {
   background-color: var(--thm-black);
   position: relative;
-  padding: 100px 0;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 @media (max-width: 991px) {
   .faq-one {
-    padding-top: 330px;
+    padding-top: 80px;
     padding-bottom: 80px;
   }
 }
@@ -3542,10 +3539,6 @@ h6 {
 
 .faq-one #accordion li + li {
   margin-top: 20px;
-}
-
-.faq-one ul {
-  margin-top: 25px;
 }
 
 .faq-one #accordion .para-title {
@@ -5690,7 +5683,7 @@ h6 {
   right: 0;
   background-color: #eff2f6;
   margin-top: -90px;
-  margin-bottom: -90px;
+  /* margin-bottom: -90px; */
 }
 
 @media (max-width: 991px) {
@@ -5739,7 +5732,8 @@ h6 {
   z-index: 1;
 }
 
-.serivces-widget-list li a:hover {
+.serivces-widget-list li a:hover,
+.serivces-widget-list li a.active {
   color: var(--thm-base);
 }
 
@@ -5754,7 +5748,8 @@ h6 {
 }
 
 .serivces-widget-list li a:hover:before,
-.serivces-widget-list li.service-active a:before {
+.serivces-widget-list li.service-active a:before,
+.serivces-widget-list li a.active:before {
   height: 100%;
   bottom: 0;
 }

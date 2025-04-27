@@ -1,11 +1,19 @@
+"use client";
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  if (isHomePage) return;
+
   return (
     <>
       <footer className="site-footer">
         <div className="container">
-          <div className="grid sm:grid-cols-3 grid-cols-2 gap-6 justify-content-between">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 justify-content-between">
             <div>
               <div className="footer-widget footer-widget__about">
                 <a href="#">
@@ -28,7 +36,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="sm:ps-16">
+            <div className="lg:ps-16">
               <div className="footer-widget footer-widget__link">
                 <h3 className="footer-widget__title">Explore</h3>
                 <ul className="list-unstyled footer-widget__link-list">

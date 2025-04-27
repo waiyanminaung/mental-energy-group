@@ -5,115 +5,13 @@ import LogoSection from "./components/LogoSection";
 import { useState } from "react";
 import TeamSection from "./components/TeamSection";
 import HeroSlider from "./components/HeroSlider";
-
-const sliderData = [
-  {
-    id: 1,
-    title: "Medical Tourism & Travel Support",
-    subtitle: "Seamless Medical Journeys",
-    image: "/images/main-slider/main-slider-2-3.jpg",
-  },
-  {
-    id: 2,
-    title: "Visa, Passport & Embassy Assistance",
-    subtitle: "Expert Help with All Your Official Documents",
-    image: "/images/main-slider/main-slider-2-3.jpg",
-  },
-  {
-    id: 3,
-    title: "Real Estate & Work Permit Solutions",
-    subtitle: "Trusted Agents & Secure Your Work Permits Easily",
-    image: "/images/main-slider/main-slider-2-3.jpg",
-  },
-];
-
-const highlight = [
-  {
-    id: 10,
-    title: "All-in-One Service Provider",
-    description:
-      "From medical travel and visa support to real estate and work permits — we handle it all, so you don’t have to deal with multiple agencies.",
-  },
-  {
-    id: 20,
-    title: "Reliable Document Assistance",
-    description:
-      "We specialize in embassy documents, visas, passports, and permits — ensuring accuracy, speed, and stress-free processing.",
-  },
-  {
-    id: 30,
-    title: "Local Expertise You Can Trust",
-    description:
-      "With deep knowledge of local and regional procedures, our team and network of agents provide dependable support every step of the way.",
-  },
-];
-
-const services = [
-  {
-    id: 1,
-    title: "Medical Tourism",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Visa & Docs",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Ticket Booking",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
-    link: "#",
-  },
-  {
-    id: 4,
-    title: "Car Rental",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
-    link: "#",
-  },
-  {
-    id: 5,
-    title: "Real Estate",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
-  },
-];
-
-const logos = [
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-];
-
-const faqData = [
-  {
-    id: "faq1",
-    question: "Need a lower monthly payment plan?",
-    answer:
-      "There are many variations of the have suffer in some fo injected humour, or words believable. Lorem ipsum dolor sit amet, consectetur adip isicing elit.",
-  },
-  {
-    id: "faq2",
-    question: "Want to study at prestigious university?",
-    answer:
-      "There are many variations of the have suffer in some fo injected humour, or words believable. Lorem ipsum dolor sit amet, consectetur adip isicing elit.",
-  },
-  {
-    id: "faq3",
-    question: "Want to invest and don't have money?",
-    answer:
-      "There are many variations of the have suffer in some fo injected humour, or words believable. Lorem ipsum dolor sit amet, consectetur adip isicing elit.",
-  },
-];
+import {
+  faqData,
+  highlightData,
+  logosData,
+  servicesData,
+  sliderData,
+} from "../data";
 
 export default function HomePage() {
   const [activeId, setActiveId] = useState("faq1");
@@ -125,7 +23,7 @@ export default function HomePage() {
       <section className="service-two">
         <div className="container">
           <div className="grid lg:grid-cols-3 gap-6">
-            {highlight.map((item) => {
+            {highlightData.map((item) => {
               return (
                 <div key={item.id}>
                   <div className="service-two__card">
@@ -144,9 +42,9 @@ export default function HomePage() {
 
       <section className="about-two">
         <div className="container">
-          <div className="grid grid-cols-12 gap-6">
+          <div className="grid lg:grid-cols-12 gap-6">
             <div
-              className="col-span-5 wow fadeInLeft"
+              className="lg:col-span-5 wow fadeInLeft"
               data-wow-duration="1500ms"
             >
               <div className="about-two__image">
@@ -162,7 +60,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-span-7">
+            <div className="lg:col-span-7">
               <div className="about-two__content">
                 <div className="block-title text-left">
                   <p>Company Introductions</p>
@@ -236,7 +134,7 @@ export default function HomePage() {
             <h2>All Services</h2>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            {services.map((service) => {
+            {servicesData.map((service) => {
               return (
                 <div
                   className="service-second lg:basis-[calc(33%-16px)]"
@@ -269,7 +167,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <LogoSection data={logos} />
+      <LogoSection data={logosData} />
 
       <section className="faq-one">
         <div
@@ -279,7 +177,7 @@ export default function HomePage() {
           }}
         />
         <div className="container">
-          <div className="grid grid-cols-2">
+          <div className="grid lg:grid-cols-2">
             <div>
               <div className="faq-one__content">
                 <div className="block-title text-left">

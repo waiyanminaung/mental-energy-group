@@ -1,28 +1,39 @@
+"use client";
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  if (isHomePage) return;
+
   return (
     <header className="main-header main-header__two">
       <nav className="main-menu main-menu__two">
-        <div className="container">
+        <div className="container md:py-5 py-3.5">
           <div className="logo-box">
-            <a href="index.html" aria-label="logo image">
-              <Image src="/images/logo.png" width={80} height={80} alt="" />
+            <a href="\" aria-label="logo image">
+              <Image
+                src="/images/logo.png"
+                width={80}
+                height={80}
+                className="lg:size-20 size-16"
+                alt=""
+              />
             </a>
             <span className="fa fa-bars mobile-nav__toggler"></span>
           </div>
           <ul className="main-menu__list">
             <li>
-              <a href="#">Home</a>
+              <a href="/home">Home</a>
             </li>
             <li>
-              <a href="#">About Us</a>
+              <a href="/services">Service</a>
             </li>
             <li>
-              <a href="#">Service</a>
-            </li>
-            <li>
-              <a href="#">Contact Us</a>
+              <a href="/contact-us">Contact Us</a>
             </li>
           </ul>
 

@@ -28,9 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="css/pylon-icons.css" />
-        <link rel="stylesheet" href="css/flaticon.css" />
-        <link rel="stylesheet" href="css/fontawesome-all.min.css" />
+        <link rel="stylesheet" href="/css/pylon-icons.css" />
+        <link rel="stylesheet" href="/css/flaticon.css" />
+        <link rel="stylesheet" href="/css/fontawesome-all.min.css" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
