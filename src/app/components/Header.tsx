@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [mobileNavVisible, setMobileNavVisible] = useState(false);
+  const isHomePage = pathname === "/";
+
+  if (isHomePage) return;
 
   const toggleMobileNav = () => {
     setMobileNavVisible(!mobileNavVisible);
