@@ -41,19 +41,19 @@ export const sliderData = [
     id: 1,
     title: "Medical Tourism & Travel Support",
     subtitle: "Seamless Medical Journeys",
-    image: "/images/main-slider/main-slider-2-3.jpg",
+    image: "/images/main-slider/medical-tourism.jpg",
   },
   {
     id: 2,
     title: "Visa, Passport & Embassy Assistance",
     subtitle: "Expert Help with Official Documents",
-    image: "/images/main-slider/main-slider-2-3.jpg",
+    image: "/images/main-slider/visa.jpg",
   },
   {
     id: 3,
     title: "Real Estate & Work Permit Solutions",
     subtitle: "Trusted & Secure Agent",
-    image: "/images/main-slider/main-slider-2-3.jpg",
+    image: "/images/main-slider/real-estate.jpg",
   },
 ];
 
