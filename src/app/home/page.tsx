@@ -81,15 +81,19 @@ export default function HomePage() {
                   </li>
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Visa, Passport & Embassy Documents
+                    Comprehensive travel planning and support
                   </li>
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Work Permit Services
+                    Property sales, purchases, and rental assistance
                   </li>
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Local Real Estate Assistance
+                    Passport and visa application support
+                  </li>
+                  <li>
+                    <i className="fa fa-check-circle"></i>
+                    Professional interpretation and job recruitment assistance
                   </li>
                 </ul>
                 <div className="button-wrap">
