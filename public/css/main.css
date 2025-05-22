@@ -806,10 +806,18 @@
   border-radius: 4px;
   -webkit-transform: scale(1);
   transform: scale(1);
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, transform 500ms ease;
-  transition: opacity 500ms ease, transform 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease,
     -webkit-transform 500ms ease;
 }
 
@@ -844,7 +852,9 @@
   -webkit-transition: -webkit-transform 0.7s;
   transition: -webkit-transform 0.7s;
   transition: transform 0.7s;
-  transition: transform 0.7s, -webkit-transform 0.7s;
+  transition:
+    transform 0.7s,
+    -webkit-transform 0.7s;
 }
 
 .blog-card__content {
@@ -1030,10 +1040,9 @@ body {
 }
 
 a,
-a:hover,
 a:focus,
 a:visited {
-  text-decoration: none;
+  text-decoration-line: none;
 }
 
 h1,
@@ -1045,6 +1054,11 @@ h6 {
   font-family: var(--heading-font);
   color: var(--thm-black);
   font-weight: 700;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 575px) {
@@ -1572,7 +1586,9 @@ h6 {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    -webkit-transform 500ms ease;
 }
 
 .main-menu .main-menu__list > li.current > a,
@@ -1638,8 +1654,12 @@ h6 {
   right: 0;
   -webkit-transform: translateY(-50%) translateX(50%);
   transform: translateY(-50%) translateX(50%);
-  -webkit-transition: background-color 500ms, color 500ms;
-  transition: background-color 500ms, color 500ms;
+  -webkit-transition:
+    background-color 500ms,
+    color 500ms;
+  transition:
+    background-color 500ms,
+    color 500ms;
 }
 
 .main-menu .main-menu__list li.cart-btn:hover span,
@@ -1825,7 +1845,9 @@ h6 {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    -webkit-transform 500ms ease;
   -webkit-box-shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.2);
 }
@@ -2198,14 +2220,23 @@ h6 {
   visibility: hidden;
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
-  -webkit-transition: opacity 0.5s ease 0.5s, visibility 0.5s ease 0.5s,
+  -webkit-transition:
+    opacity 0.5s ease 0.5s,
+    visibility 0.5s ease 0.5s,
     -webkit-transform 0.5s ease 0.5s;
-  transition: opacity 0.5s ease 0.5s, visibility 0.5s ease 0.5s,
+  transition:
+    opacity 0.5s ease 0.5s,
+    visibility 0.5s ease 0.5s,
     -webkit-transform 0.5s ease 0.5s;
-  transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s,
+  transition:
+    transform 0.5s ease 0.5s,
+    opacity 0.5s ease 0.5s,
     visibility 0.5s ease 0.5s;
-  transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s,
-    visibility 0.5s ease 0.5s, -webkit-transform 0.5s ease 0.5s;
+  transition:
+    transform 0.5s ease 0.5s,
+    opacity 0.5s ease 0.5s,
+    visibility 0.5s ease 0.5s,
+    -webkit-transform 0.5s ease 0.5s;
   z-index: 999;
 }
 
@@ -2219,14 +2250,23 @@ h6 {
   visibility: visible;
   -webkit-transform: translateX(0);
   transform: translateX(0);
-  -webkit-transition: opacity 0.5s ease 0.5s, visibility 0.5s ease 0.5s,
+  -webkit-transition:
+    opacity 0.5s ease 0.5s,
+    visibility 0.5s ease 0.5s,
     -webkit-transform 0.5s ease 0.5s;
-  transition: opacity 0.5s ease 0.5s, visibility 0.5s ease 0.5s,
+  transition:
+    opacity 0.5s ease 0.5s,
+    visibility 0.5s ease 0.5s,
     -webkit-transform 0.5s ease 0.5s;
-  transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s,
+  transition:
+    transform 0.5s ease 0.5s,
+    opacity 0.5s ease 0.5s,
     visibility 0.5s ease 0.5s;
-  transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s,
-    visibility 0.5s ease 0.5s, -webkit-transform 0.5s ease 0.5s;
+  transition:
+    transform 0.5s ease 0.5s,
+    opacity 0.5s ease 0.5s,
+    visibility 0.5s ease 0.5s,
+    -webkit-transform 0.5s ease 0.5s;
 }
 
 .mobile-nav__overlay {
@@ -2256,12 +2296,22 @@ h6 {
   opacity: 0;
   -webkit-transform: translateX(50%);
   transform: translateX(50%);
-  -webkit-transition: visibility 0.5s ease, opacity 0.5s ease,
+  -webkit-transition:
+    visibility 0.5s ease,
+    opacity 0.5s ease,
     -webkit-transform 0.5s ease;
-  transition: visibility 0.5s ease, opacity 0.5s ease,
+  transition:
+    visibility 0.5s ease,
+    opacity 0.5s ease,
     -webkit-transform 0.5s ease;
-  transition: transform 0.5s ease, visibility 0.5s ease, opacity 0.5s ease;
-  transition: transform 0.5s ease, visibility 0.5s ease, opacity 0.5s ease,
+  transition:
+    transform 0.5s ease,
+    visibility 0.5s ease,
+    opacity 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    visibility 0.5s ease,
+    opacity 0.5s ease,
     -webkit-transform 0.5s ease;
 }
 
@@ -2270,14 +2320,23 @@ h6 {
   visibility: visible;
   -webkit-transform: translateX(0);
   transform: translateX(0);
-  -webkit-transition: visibility 0.9s ease 0.5s, opacity 0.9s ease 0.9s,
+  -webkit-transition:
+    visibility 0.9s ease 0.5s,
+    opacity 0.9s ease 0.9s,
     -webkit-transform 0.9s ease 0.9s;
-  transition: visibility 0.9s ease 0.5s, opacity 0.9s ease 0.9s,
+  transition:
+    visibility 0.9s ease 0.5s,
+    opacity 0.9s ease 0.9s,
     -webkit-transform 0.9s ease 0.9s;
-  transition: transform 0.9s ease 0.9s, visibility 0.9s ease 0.5s,
+  transition:
+    transform 0.9s ease 0.9s,
+    visibility 0.9s ease 0.5s,
     opacity 0.9s ease 0.9s;
-  transition: transform 0.9s ease 0.9s, visibility 0.9s ease 0.5s,
-    opacity 0.9s ease 0.9s, -webkit-transform 0.9s ease 0.9s;
+  transition:
+    transform 0.9s ease 0.9s,
+    visibility 0.9s ease 0.5s,
+    opacity 0.9s ease 0.9s,
+    -webkit-transform 0.9s ease 0.9s;
 }
 
 .mobile-nav__content .thm-btn {
@@ -2387,7 +2446,9 @@ h6 {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    -webkit-transform 500ms ease;
 }
 
 .mobile-nav__content .main-menu__list li a button.expanded {
@@ -2562,10 +2623,18 @@ h6 {
   align-items: center;
   -webkit-transform: translateY(-110%);
   transform: translateY(-110%);
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease,
     -webkit-transform 500ms ease;
 }
 
@@ -2670,7 +2739,9 @@ h6 {
   -webkit-transition: -webkit-transform 7000ms ease;
   transition: -webkit-transform 7000ms ease;
   transition: transform 7000ms ease;
-  transition: transform 7000ms ease, -webkit-transform 7000ms ease;
+  transition:
+    transform 7000ms ease,
+    -webkit-transform 7000ms ease;
 }
 
 .main-slider .swiper-slide .container {
@@ -2703,10 +2774,18 @@ h6 {
   transform: translateY(-120px);
   -webkit-transition-delay: 0;
   transition-delay: 0;
-  -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease,
+  -webkit-transition:
+    opacity 2000ms ease,
+    -webkit-transform 2000ms ease;
+  transition:
+    opacity 2000ms ease,
+    -webkit-transform 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease,
     -webkit-transform 2000ms ease;
 }
 
@@ -2730,10 +2809,18 @@ h6 {
   transform: translateY(90px);
   -webkit-transition-delay: 1000ms;
   transition-delay: 1000ms;
-  -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease,
+  -webkit-transition:
+    opacity 2000ms ease,
+    -webkit-transform 2000ms ease;
+  transition:
+    opacity 2000ms ease,
+    -webkit-transform 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease,
     -webkit-transform 2000ms ease;
 }
 
@@ -2768,14 +2855,27 @@ h6 {
   transform: translateY(100px);
   -webkit-transition-delay: 2500ms;
   transition-delay: 2500ms;
-  -webkit-transition: opacity 2000ms ease, color 500ms ease,
-    background 500ms ease, -webkit-transform 2000ms ease;
-  transition: opacity 2000ms ease, color 500ms ease, background 500ms ease,
+  -webkit-transition:
+    opacity 2000ms ease,
+    color 500ms ease,
+    background 500ms ease,
     -webkit-transform 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease, color 500ms ease,
+  transition:
+    opacity 2000ms ease,
+    color 500ms ease,
+    background 500ms ease,
+    -webkit-transform 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease,
+    color 500ms ease,
     background 500ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease, color 500ms ease,
-    background 500ms ease, -webkit-transform 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease,
+    color 500ms ease,
+    background 500ms ease,
+    -webkit-transform 2000ms ease;
 }
 
 .main-slider .swiper-slide-active .image-layer {
@@ -3868,7 +3968,9 @@ h6 {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    -webkit-transform 500ms ease;
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transform-origin: center center;
@@ -5105,10 +5207,18 @@ h6 {
 
 .service-one__image img {
   width: 100%;
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease,
     -webkit-transform 500ms ease;
   opacity: 1;
   -webkit-transform: scale(1);
@@ -6939,10 +7049,18 @@ h6 {
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, transform 500ms ease;
-  transition: opacity 500ms ease, transform 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease,
     -webkit-transform 500ms ease;
 }
 
@@ -7001,10 +7119,18 @@ h6 {
   -webkit-transform: scale(1, 0);
   transform: scale(1, 0);
   opacity: 0;
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease,
     -webkit-transform 500ms ease;
   -webkit-transform-origin: bottom left;
   transform-origin: bottom left;
@@ -8592,7 +8718,9 @@ h6 {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    -webkit-transform 500ms ease;
 }
 
 .blog-one__single:hover .blog-one__single__image::after {
@@ -8622,14 +8750,27 @@ h6 {
   font-size: 15px;
   border-radius: 50%;
   color: #0f2643;
-  -webkit-transition: background 500ms ease, border 500ms ease, color 500ms ease,
+  -webkit-transition:
+    background 500ms ease,
+    border 500ms ease,
+    color 500ms ease,
     -webkit-transform 500ms ease;
-  transition: background 500ms ease, border 500ms ease, color 500ms ease,
+  transition:
+    background 500ms ease,
+    border 500ms ease,
+    color 500ms ease,
     -webkit-transform 500ms ease;
-  transition: background 500ms ease, border 500ms ease, color 500ms ease,
+  transition:
+    background 500ms ease,
+    border 500ms ease,
+    color 500ms ease,
     transform 500ms ease;
-  transition: background 500ms ease, border 500ms ease, color 500ms ease,
-    transform 500ms ease, -webkit-transform 500ms ease;
+  transition:
+    background 500ms ease,
+    border 500ms ease,
+    color 500ms ease,
+    transform 500ms ease,
+    -webkit-transform 500ms ease;
   z-index: 10;
   -webkit-transform: scale(0);
   transform: scale(0);
@@ -8666,10 +8807,18 @@ h6 {
   z-index: 10;
   -webkit-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
-  -webkit-transition: background 500ms ease, -webkit-transform 500ms ease;
-  transition: background 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, background 500ms ease;
-  transition: transform 500ms ease, background 500ms ease,
+  -webkit-transition:
+    background 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    background 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    background 500ms ease;
+  transition:
+    transform 500ms ease,
+    background 500ms ease,
     -webkit-transform 500ms ease;
 }
 
@@ -9347,7 +9496,9 @@ h6 {
   -webkit-transition: -webkit-transform 500ms ease;
   transition: -webkit-transform 500ms ease;
   transition: transform 500ms ease;
-  transition: transform 500ms ease, -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    -webkit-transform 500ms ease;
 }
 
 .testimonials-two__carousel__thumbs .swiper-slide-active {
@@ -10333,8 +10484,12 @@ h6 {
 .service-three .owl-carousel .owl-item {
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: opacity 500ms ease, visibility 500ms ease;
-  transition: opacity 500ms ease, visibility 500ms ease;
+  -webkit-transition:
+    opacity 500ms ease,
+    visibility 500ms ease;
+  transition:
+    opacity 500ms ease,
+    visibility 500ms ease;
 }
 
 .service-three .owl-carousel .owl-item.active {
@@ -11161,10 +11316,18 @@ h6 {
   transform: translateY(120px);
   -webkit-transition-delay: 0;
   transition-delay: 0;
-  -webkit-transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease;
-  transition: transform 2000ms ease, opacity 2000ms ease,
+  -webkit-transition:
+    opacity 2000ms ease,
+    -webkit-transform 2000ms ease;
+  transition:
+    opacity 2000ms ease,
+    -webkit-transform 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease;
+  transition:
+    transform 2000ms ease,
+    opacity 2000ms ease,
     -webkit-transform 2000ms ease;
   margin-bottom: 24px;
   margin-top: 17px;
@@ -12323,10 +12486,18 @@ Main Slider Four
   background-attachment: scroll;
   -webkit-transform: scale(1);
   transform: scale(1);
-  -webkit-transition: opacity 1500ms ease-in, -webkit-transform 7000ms ease;
-  transition: opacity 1500ms ease-in, -webkit-transform 7000ms ease;
-  transition: transform 7000ms ease, opacity 1500ms ease-in;
-  transition: transform 7000ms ease, opacity 1500ms ease-in,
+  -webkit-transition:
+    opacity 1500ms ease-in,
+    -webkit-transform 7000ms ease;
+  transition:
+    opacity 1500ms ease-in,
+    -webkit-transform 7000ms ease;
+  transition:
+    transform 7000ms ease,
+    opacity 1500ms ease-in;
+  transition:
+    transform 7000ms ease,
+    opacity 1500ms ease-in,
     -webkit-transform 7000ms ease;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12527,10 +12698,18 @@ Main Slider Five
   background-attachment: scroll;
   -webkit-transform: scale(1);
   transform: scale(1);
-  -webkit-transition: opacity 1500ms ease-in, -webkit-transform 7000ms ease;
-  transition: opacity 1500ms ease-in, -webkit-transform 7000ms ease;
-  transition: transform 7000ms ease, opacity 1500ms ease-in;
-  transition: transform 7000ms ease, opacity 1500ms ease-in,
+  -webkit-transition:
+    opacity 1500ms ease-in,
+    -webkit-transform 7000ms ease;
+  transition:
+    opacity 1500ms ease-in,
+    -webkit-transform 7000ms ease;
+  transition:
+    transform 7000ms ease,
+    opacity 1500ms ease-in;
+  transition:
+    transform 7000ms ease,
+    opacity 1500ms ease-in,
     -webkit-transform 7000ms ease;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12781,10 +12960,18 @@ Feature Five
   -webkit-transform: scale(1, 0);
   transform: scale(1, 0);
   opacity: 0;
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease,
     -webkit-transform 500ms ease;
   -webkit-transform-origin: bottom left;
   transform-origin: top left;
@@ -12795,10 +12982,18 @@ Feature Five
   opacity: 1;
   -webkit-transform: scale(1, 1);
   transform: scale(1, 1);
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease,
     -webkit-transform 500ms ease;
   -webkit-transform-origin: bottom left;
   transform-origin: top left;
@@ -12914,10 +13109,18 @@ Feature Five
   opacity: 1;
   -webkit-transform: scale(1, 1);
   transform: scale(1, 1);
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease,
     -webkit-transform 500ms ease;
   -webkit-transform-origin: bottom left;
   transform-origin: bottom left;
@@ -12927,10 +13130,18 @@ Feature Five
   -webkit-transform: scale(1, 0);
   transform: scale(1, 0);
   opacity: 0;
-  -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: opacity 500ms ease, -webkit-transform 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease;
-  transition: transform 500ms ease, opacity 500ms ease,
+  -webkit-transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    opacity 500ms ease,
+    -webkit-transform 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease,
     -webkit-transform 500ms ease;
   -webkit-transform-origin: bottom left;
   transform-origin: bottom left;
@@ -13808,7 +14019,9 @@ Testimonials Three
 .testimonials-three__inner .owl-carousel .owl-item {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 500ms ease, visibility 500ms ease;
+  transition:
+    opacity 500ms ease,
+    visibility 500ms ease;
 }
 
 .testimonials-three__inner .owl-carousel .owl-item.active {
@@ -15151,7 +15364,9 @@ Testimonials Four
 .testimonials-four__inner .owl-carousel .owl-item {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 500ms ease, visibility 500ms ease;
+  transition:
+    opacity 500ms ease,
+    visibility 500ms ease;
 }
 
 .testimonials-four__inner .owl-carousel .owl-item.active {

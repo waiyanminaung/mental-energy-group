@@ -1,5 +1,5 @@
-import { BookingDto } from "@/app/services/medical-tourism/components/BookingForm";
-import { BaseMailData } from "@/app/types";
+import { BookingDto } from "@/app/(main)/services/medical-tourism/components/MedicalTourismBookingFormModal";
+import { BaseMailData } from "@/app/(main)/types";
 import * as React from "react";
 
 export const MedicalTourismEmailTemplate: React.FC<

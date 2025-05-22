@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import * as React from "react";
 import { MedicalTourismEmailTemplate } from "@/app/components/email/medical-tourism-template";
-import { ServiceTypeEnum } from "@/app/constant";
+import { ServiceTypeEnum } from "@/app/(main)/constant";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

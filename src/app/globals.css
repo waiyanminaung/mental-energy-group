@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap");
-@import url("../../public/css/main.css");
+/* @import url("../../public/css/main.css"); */
 @import "tailwindcss";
 
 /* #DBB481 */
@@ -36,11 +36,14 @@
   padding-right: 16px;
 }
 
-p {
-  margin-top: 0px;
-  margin-bottom: 1rem;
-}
-
 button {
   cursor: pointer;
+}
+
+.mask {
+  mask: url("/images/shape/mask-18.svg") no-repeat center;
+  -webkit-mask: url("/images/shape/mask-18.svg") no-repeat center;
+  mask-size: 100%;
+  -webkit-mask-size: 100%;
+  position: relative;
 }
