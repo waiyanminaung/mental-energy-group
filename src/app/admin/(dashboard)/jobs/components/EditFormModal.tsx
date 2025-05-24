@@ -14,16 +14,16 @@ import { RHFTextarea } from "@/app/components/rhf/rhf-textarea";
 import { FileValue, RHFFile } from "@/app/components/rhf/rhf-file";
 import Button from "@/app/admin/components/Button";
 import Image from "next/image";
-import { Announcement } from "../type";
 import { RHFSelect } from "@/app/components/rhf/rhf-select";
 import { CollectionEnum } from "@/app/(main)/constant";
+import { Job } from "../type";
 
 interface EditFormModalProps extends ModalProps {
-  data?: Announcement;
+  data?: Job;
   onSuccess?: () => void;
 }
 
-const announcementSchema = yup.object({
+const jobSchema = yup.object({
   id: yup.string().nullable(),
   title: yup.string().required("Title is required"),
   content: yup.string().required("Content is required"),
@@ -38,7 +38,7 @@ const announcementSchema = yup.object({
     .nullable(),
 });
 
-export type AnnouncementDto = yup.InferType<typeof announcementSchema>;
+export type JobDto = yup.InferType<typeof jobSchema>;
 
 const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
   const methods = useForm({
@@ -52,19 +52,19 @@ const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
           } as unknown as FileValue)
         : null,
     },
-    resolver: yupResolver(announcementSchema),
+    resolver: yupResolver(jobSchema),
     shouldFocusError: false,
   });
 
   const isEditMode = data?.id;
 
-  const onSubmit = async (formData: AnnouncementDto) => {
+  const onSubmit = async (formData: JobDto) => {
     try {
       let imageUrl = "";
       if (formData.featured_image?.file) {
         const storageRef = ref(
           storage,
-          `hospital-announcements/${Date.now()}_${formData?.featured_image.file.name}`
+          `jobs/${Date.now()}_${formData?.featured_image.file.name}`
         );
         const uploadResult = await uploadBytes(
           storageRef,
@@ -83,15 +83,12 @@ const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
 
       if (isEditMode) {
         if (!data.id) return console.log("No id found");
-        const docRef = doc(db, CollectionEnum.HOSPITAL_ANNOUNCEMENTS, data.id);
+        const docRef = doc(db, CollectionEnum.JOB, data.id);
         console.log("update", payload);
         await updateDoc(docRef, payload);
       } else {
         console.log("new", payload);
-        await addDoc(
-          collection(db, CollectionEnum.HOSPITAL_ANNOUNCEMENTS),
-          payload
-        );
+        await addDoc(collection(db, CollectionEnum.JOB), payload);
       }
 
       toast.success("Announcement saved successfully");
@@ -116,7 +113,7 @@ const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
         >
           {/* Header */}
           <div className="px-6 py-4 font-semibold text-lg flex items-center justify-between">
-            {isEditMode ? "Edit Announcement" : "Create Announcement"}
+            {isEditMode ? "Edit Job" : "Create Job"}
           </div>
 
           <div className="p-6 pt-0 space-y-6 flex-1 overflow-y-auto">

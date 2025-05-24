@@ -9,9 +9,10 @@ import { Announcement } from "./type";
 import { useModal } from "@/app/components/modal/useModal";
 import EditFormModal from "./components/EditFormModal";
 import { ConfirmDialog } from "@/app/admin/components/ConfirmDialog";
-import { deleteDoc, doc } from "firebase/firestore";
 import toast from "react-hot-toast";
-import { db } from "@/lib/firebase";
+import { CollectionEnum } from "@/app/(main)/constant";
+import { orderBy } from "lodash";
+import { firebaseDeleteDocument } from "@/app/admin/utils/firebaseDeleteDocument";
 
 export default function AnnouncementsPage() {
   const {
@@ -19,7 +20,7 @@ export default function AnnouncementsPage() {
     loading,
     error,
     refresh,
-  } = useFirestoreDB<Announcement>("hospital_announcement");
+  } = useFirestoreDB<Announcement>(CollectionEnum.HOSPITAL_ANNOUNCEMENTS);
 
   const { show } = useModal();
 
@@ -30,14 +31,16 @@ export default function AnnouncementsPage() {
     show(<EditFormModal data={data} onSuccess={refresh} />);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (announcement: Announcement) => {
     ConfirmDialog.show({
       title: "Delete Announcement",
       message: "Are you sure you want to delete this announcement?",
       onConfirm: async () => {
         try {
-          const docRef = doc(db, "hospital_announcement", id);
-          await deleteDoc(docRef);
+          await firebaseDeleteDocument(
+            CollectionEnum.HOSPITAL_ANNOUNCEMENTS,
+            announcement
+          );
           refresh();
           toast.success("Announcement deleted successfully");
         } catch (error) {
@@ -87,64 +90,77 @@ export default function AnnouncementsPage() {
             </tr>
           </thead>
           <tbody>
-            {announcements.map((announcement) => (
-              <tr
-                key={announcement.id}
-                className="bg-white border-b last:border-0 border-gray-200"
-              >
-                <td className="px-6 py-3">
-                  <Image
-                    src={
-                      announcement.featured_image ||
-                      "/images/placeholder-image.png"
-                    }
-                    alt={announcement.title}
-                    width={48}
-                    height={48}
-                    className="rounded-lg size-12 object-cover object-center"
-                  />
-                </td>
-                <th className="px-6 py-3 font-medium text-gray-900 whitespace-nowrap">
-                  {announcement.title}
-                </th>
-                <td className="px-6 py-3">
-                  {new Date(announcement.created_at).toLocaleDateString()}
-                </td>
-                <td className="px-6 py-3">
-                  <span
-                    className={classNames(
-                      "inline-flex px-3 py-1 rounded-full text-xs font-medium text-center capitalize",
-                      announcement.status == 1
-                        ? "bg-green-100 text-green-800"
-                        : "bg-gray-100 text-gray-800"
-                    )}
-                  >
-                    {announcement.status == 1 ? "Publish" : "Draft"}
-                  </span>
-                </td>
-                <td className="px-6 py-3 text-right">
-                  <div className="flex gap-3 justify-end">
-                    <Button
-                      isLoading={loading}
-                      size="small"
-                      onClick={() => handleCreateOrEdit(announcement)}
-                      className="font-medium hover:text-primary hover:underline"
-                    >
-                      <Edit05 width={16} height={16} />
-                    </Button>
-
-                    <Button
-                      isLoading={loading}
-                      size="small"
-                      onClick={() => handleDelete(announcement.id)}
-                      className="font-medium hover:text-destructive hover:underline"
-                    >
-                      <Trash01 width={16} height={16} />
-                    </Button>
-                  </div>
+            {announcements.length === 0 ? (
+              <tr className="bg-white">
+                <td
+                  className="px-6 py-4 whitespace-nowrap text-center text-md"
+                  colSpan={5}
+                >
+                  No announcements found
                 </td>
               </tr>
-            ))}
+            ) : (
+              orderBy(announcements, ["created_at"], ["desc"]).map(
+                (announcement) => (
+                  <tr
+                    key={announcement.id}
+                    className="bg-white border-b last:border-0 border-gray-200"
+                  >
+                    <td className="px-6 py-3">
+                      <Image
+                        src={
+                          announcement.featured_image ||
+                          "/images/placeholder-image.png"
+                        }
+                        alt={announcement.title}
+                        width={48}
+                        height={48}
+                        className="rounded-lg size-12 object-cover object-center"
+                      />
+                    </td>
+                    <th className="px-6 py-3 font-medium text-gray-900 whitespace-nowrap">
+                      {announcement.title}
+                    </th>
+                    <td className="px-6 py-3">
+                      {new Date(announcement.created_at).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-3">
+                      <span
+                        className={classNames(
+                          "inline-flex px-3 py-1 rounded-full text-xs font-medium text-center capitalize",
+                          announcement.status == 1
+                            ? "bg-green-100 text-green-800"
+                            : "bg-gray-100 text-gray-800"
+                        )}
+                      >
+                        {announcement.status == 1 ? "Publish" : "Draft"}
+                      </span>
+                    </td>
+                    <td className="px-6 py-3 text-right">
+                      <div className="flex gap-3 justify-end">
+                        <Button
+                          isLoading={loading}
+                          size="small"
+                          onClick={() => handleCreateOrEdit(announcement)}
+                          className="font-medium hover:text-primary hover:underline"
+                        >
+                          <Edit05 width={16} height={16} />
+                        </Button>
+
+                        <Button
+                          isLoading={loading}
+                          size="small"
+                          onClick={() => handleDelete(announcement)}
+                          className="font-medium hover:text-destructive hover:underline"
+                        >
+                          <Trash01 width={16} height={16} />
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              )
+            )}
           </tbody>
         </table>
       </div>
