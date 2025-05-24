@@ -1,6 +1,7 @@
 import { Hospital } from "./type";
 import HospitalCard from "./components/HospitalCard";
 import EntryServiceBanner from "@/app/components/EntryServiceBanner";
+import HospitalAnnouncementSection from "./components/HospitalAnnouncementSection";
 
 const hospitals: {
   category: string;
@@ -96,6 +97,8 @@ export default function MedicalTourismPage() {
         description="Experience Thailand's premier healthcare facilities with internationally accredited hospitals and skilled medical professionals"
         image="/images/main-slider/medical-tourism.jpg"
       />
+
+      <HospitalAnnouncementSection />
 
       {hospitals.map((category, idx) => (
         <div key={idx} className="mx-auto mb-16">

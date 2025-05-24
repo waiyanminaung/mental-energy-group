@@ -5,6 +5,7 @@ import ContactInfoSection from "@/app/components/layout/ContactInfoSection";
 import MakeRequestSection from "@/app/components/layout/MakeRequestSection";
 import JobApplicationModal from "./components/JobApplicationModal";
 import { useModal } from "@/app/components/modal/useModal";
+import JobsSection from "./components/JobsSection";
 
 export default function Page() {
   const { show } = useModal();
@@ -16,6 +17,7 @@ export default function Page() {
         description="Connect with skilled professionals through our comprehensive manpower services. We provide reliable staffing solutions tailored to your business needs."
         image="/images/manpower.jpeg"
       />
+      <JobsSection />
       <ContactInfoSection />
       <MakeRequestSection
         requestDescription="Ready to start your journey? Make a request now and let us help you
