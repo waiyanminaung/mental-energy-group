@@ -4,43 +4,91 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
+import { storage, db } from "@/lib/firebase";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { RHFInput } from "@/app/components/rhf";
 import { RHFTextarea } from "@/app/components/rhf/rhf-textarea";
-import { RHFFile } from "@/app/components/rhf/rhf-file";
+import { FileValue, RHFFile } from "@/app/components/rhf/rhf-file";
 import Button from "@/app/admin/components/Button";
 import Image from "next/image";
+import { Announcement } from "../type";
+import { RHFSelect } from "@/app/components/rhf/rhf-select";
 
-interface FileValue {
-  preview: string | null;
-  fileType: string;
-  file: File;
+interface EditFormModalProps extends ModalProps {
+  data?: Announcement;
+  onSuccess?: () => void;
 }
 
 const announcementSchema = yup.object({
   title: yup.string().required("Title is required"),
   content: yup.string().required("Content is required"),
-  featuredImage: yup
+  status: yup.number().required("Status is required"),
+  featured_image: yup
     .mixed<FileValue>()
     .test("fileSize", "File size is too large", (value) => {
       if (!value) return true;
       if (!value.file) return true;
       return value.file.size <= 5 * 1024 * 1024;
-    }),
+    })
+    .nullable(),
 });
 
 export type AnnouncementDto = yup.InferType<typeof announcementSchema>;
 
-const EditFormModal = ({ closeModal }: ModalProps) => {
+const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
   const methods = useForm({
+    defaultValues: {
+      ...(data ? data : {}),
+      featured_image: data?.featured_image
+        ? ({
+            preview: data?.featured_image,
+            fileType: "image",
+            file: null,
+          } as unknown as FileValue)
+        : null,
+    },
     resolver: yupResolver(announcementSchema),
+    shouldFocusError: false,
   });
 
-  const onSubmit = async (data: AnnouncementDto) => {
-    console.log(data);
-    toast.success("Announcement saved successfully");
-    handleClose();
+  const isEditMode = !!data;
+
+  const onSubmit = async (formData: AnnouncementDto) => {
+    // file is null, but preview exisit // we don't need to update image.
+
+    try {
+      let imageUrl = "";
+      // Upload image if exists
+      if (formData.featured_image?.file) {
+        const storageRef = ref(
+          storage,
+          `announcements/${Date.now()}_${formData?.featured_image.file.name}`
+        );
+        const uploadResult = await uploadBytes(
+          storageRef,
+          formData.featured_image.file
+        );
+        imageUrl = await getDownloadURL(uploadResult.ref);
+      }
+
+      // Add document to Firestore
+      await addDoc(collection(db, "hospital_announcement"), {
+        title: formData.title,
+        content: formData.content,
+        featured_image: imageUrl,
+        created_at: new Date().toISOString(),
+        status: formData.status,
+      });
+
+      toast.success("Announcement saved successfully");
+      onSuccess?.();
+      handleClose();
+    } catch {
+      toast.error("Failed to save announcement");
+    }
   };
 
   const handleClose = () => {
@@ -49,98 +97,98 @@ const EditFormModal = ({ closeModal }: ModalProps) => {
   };
 
   return (
-    <FormModalWrapper className="max-w-full max-h-full h-full rounded-none">
+    <FormModalWrapper>
       <FormProvider {...methods}>
         <form
           className="flex-1 overflow-hidden flex flex-col h-full"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           {/* Header */}
-          <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Edit Announcement</h2>
-            <div className="flex items-center gap-3">
-              <Button onClick={handleClose} appearance="text">
-                Cancel
-              </Button>
-              <Button type="submit" variant="primary">
-                Publish
-              </Button>
-            </div>
+          <div className="px-6 py-4 font-semibold text-lg flex items-center justify-between">
+            {isEditMode ? "Edit Announcement" : "Create Announcement"}
           </div>
 
-          <div className="grid grid-cols-12 flex-1">
-            <div className="col-span-9">
-              <div className="p-8 space-y-8">
-                <RHFInput
-                  name="title"
-                  className="full text-2xl font-semibold focus:ring-0 focus:border-gray-300 rounded-none py-2 px-3 h-auto"
-                  placeholder="Add Title"
-                />
-                <RHFTextarea
-                  name="content"
-                  placeholder="Add Content"
-                  className="rounded-none min-h-[300px] text-lg px-3"
-                />
-              </div>
-            </div>
-            <div className="col-span-3 border-s border-gray-300">
-              <div className="p-8">
-                <RHFFile
-                  name="featuredImage"
-                  accept="image/*"
-                  render={({ openFilePicker, field }) => {
-                    return (
+          <div className="p-6 pt-0 space-y-6 flex-1 overflow-y-auto">
+            <RHFSelect
+              name="status"
+              placeholder="Choose Status"
+              className="w-fit"
+              selectButtonClassName="pe-10"
+              options={[
+                { label: "Publish", value: 1 },
+                { label: "Draft", value: 0 },
+              ]}
+            />
+
+            <RHFFile
+              name="featured_image"
+              accept="image/*"
+              render={({ openFilePicker, field }) => {
+                console.log(field.value);
+                return (
+                  <div>
+                    {field.value?.preview ? (
                       <div>
-                        {field.value?.preview ? (
-                          <div>
-                            <div className="aspect-video relative border border-input">
-                              <Image
-                                src={field.value.preview}
-                                alt="Preview"
-                                className="w-full h-full object-cover object-center"
-                                fill
-                              />
-                            </div>
-                            <div className="grid grid-cols-2 gap-2 mt-2">
-                              <Button
-                                onClick={openFilePicker}
-                                fullWidth
-                                size="large"
-                                variant="primary"
-                                appearance="outline"
-                              >
-                                Replace
-                              </Button>
-                              <Button
-                                onClick={() => {
-                                  field.onChange(null);
-                                }}
-                                fullWidth
-                                size="large"
-                                variant="destructive"
-                                appearance="outline"
-                              >
-                                Remove
-                              </Button>
-                            </div>
-                          </div>
-                        ) : (
+                        <div className="aspect-video relative border border-input">
+                          <Image
+                            src={field.value.preview}
+                            alt="Preview"
+                            className="w-full h-full object-cover object-center"
+                            fill
+                          />
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 mt-2">
                           <Button
+                            onClick={openFilePicker}
+                            fullWidth
                             variant="primary"
                             appearance="outline"
-                            size="large"
-                            fullWidth
-                            onClick={openFilePicker}
                           >
-                            Set Featured Image
+                            Replace
                           </Button>
-                        )}
+                          <Button
+                            onClick={() => {
+                              field.onChange(null);
+                            }}
+                            fullWidth
+                            variant="destructive"
+                            appearance="outline"
+                          >
+                            Remove
+                          </Button>
+                        </div>
                       </div>
-                    );
-                  }}
-                />
-              </div>
-            </div>
+                    ) : (
+                      <Button
+                        variant="primary"
+                        appearance="outline"
+                        fullWidth
+                        onClick={openFilePicker}
+                      >
+                        Set Featured Image
+                      </Button>
+                    )}
+                  </div>
+                );
+              }}
+            />
+
+            <RHFInput name="title" placeholder="Add Title" />
+
+            <RHFTextarea name="content" placeholder="Add Content" />
+          </div>
+
+          <div className="flex justify-end gap-3.5 px-6 py-3 border-t border-gray-200">
+            <Button onClick={handleClose} appearance="outline">
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              variant="primary"
+              isLoading={methods.formState.isSubmitting}
+            >
+              {isEditMode ? "Update" : "Create"}
+            </Button>
           </div>
         </form>
       </FormProvider>

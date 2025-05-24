@@ -3,7 +3,7 @@ import { RHFController } from "./rhf-controller";
 import { Edit01, Trash01 } from "@untitledui/icons";
 import Image from "next/image";
 
-interface FileValue {
+export interface FileValue {
   preview: string | null;
   fileType: string;
   file: File;
