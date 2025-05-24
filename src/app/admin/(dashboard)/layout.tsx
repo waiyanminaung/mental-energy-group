@@ -7,6 +7,7 @@ import Link from "next/link";
 import firebase_app from "@/lib/firebase";
 import Button from "../components/Button";
 import classNames from "@/utils/classNames";
+import { ADMIN_DASHBOARD_ROUTE } from "@/app/RouteNames";
 
 const menuItems = [
   { label: "Hospitals", href: "/admin/hospitals" },
@@ -25,7 +26,7 @@ export default function DashboardLayout({
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) {
-        router.push("/login");
+        router.replace(ADMIN_DASHBOARD_ROUTE("login"));
       }
     });
 
@@ -35,7 +36,7 @@ export default function DashboardLayout({
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      router.push("/admin/login");
+      router.replace(ADMIN_DASHBOARD_ROUTE("login"));
     } catch (error) {
       console.error("Error signing out:", error);
     }
