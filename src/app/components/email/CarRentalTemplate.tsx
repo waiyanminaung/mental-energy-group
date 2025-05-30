@@ -11,6 +11,7 @@ export const CarRentalTemplate: React.FC<
   nationality,
   phone,
   driverType,
+  model,
   date,
   message,
   subject,
@@ -22,6 +23,7 @@ export const CarRentalTemplate: React.FC<
       <Row label="Nationality" value={nationality} />
       <Row label="Phone" value={phone} />
       <Row label="Driver Type" value={driverType} />
+      <Row label="Car Model" value={model} />
       <Row
         label="Date"
         value={new Date(date).toLocaleDateString("en-US", {

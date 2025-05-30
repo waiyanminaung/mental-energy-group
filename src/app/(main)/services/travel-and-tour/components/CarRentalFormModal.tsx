@@ -17,6 +17,7 @@ import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
 import { CarRentalType } from "@/app/(main)/data";
 import classNames from "@/utils/classNames";
+import { useEffect } from "react";
 
 interface FileValue {
   preview: string | null;
@@ -31,7 +32,7 @@ const carRentalSchema = yup.object({
   phone: yup.string().required("Phone is required"),
   date: yup.date().required("Preferred date is required"),
   driverType: yup.string().required("Driver Type is required"),
-
+  model: yup.string().required("Model is required"),
   passport: yup.mixed<FileValue>().when("driverType", {
     is: "without-driver",
     then: (schema) =>
@@ -75,34 +76,40 @@ const CarRentalFormModal = ({ data, closeModal }: CarRentalFormModalProps) => {
 
   const { loading, sentMail } = useSentMail<CarRentalFormDto & BaseMailData>();
 
-  const onSubmit = async (data: CarRentalFormDto) => {
-    const passportBase64 = data.passport?.file
-      ? await fileToBase64(data.passport.file)
+  useEffect(() => {
+    methods.setValue("model", data.model);
+  }, [data, methods]);
+
+  console.log(methods.watch("model"));
+
+  const onSubmit = async (formData: CarRentalFormDto) => {
+    const passportBase64 = formData.passport?.file
+      ? await fileToBase64(formData.passport.file)
       : null;
 
-    const licenseBase64 = data.driving_license?.file
-      ? await fileToBase64(data.driving_license.file)
+    const licenseBase64 = formData.driving_license?.file
+      ? await fileToBase64(formData.driving_license.file)
       : null;
 
     const attachments = [];
 
-    if (passportBase64 && data.driverType === "without-driver") {
+    if (passportBase64 && formData.driverType === "without-driver") {
       attachments.push({
         content: passportBase64,
-        filename: data?.passport?.file.name || "",
+        filename: formData?.passport?.file.name || "",
       });
     }
 
-    if (licenseBase64 && data.driverType === "without-driver") {
+    if (licenseBase64 && formData.driverType === "without-driver") {
       attachments.push({
         content: licenseBase64,
-        filename: data?.driving_license?.file.name || "",
+        filename: formData?.driving_license?.file.name || "",
       });
     }
 
     const { error } = await sentMail({
-      ...data,
-      subject: `New Enquiry for [Car Rental] - ${data.name}`,
+      ...formData,
+      subject: `New Enquiry for [Car Rental] - ${formData.model}`,
       serviceType: ServiceTypeEnum.CAR_RENTAL,
       attachments: attachments,
     });
