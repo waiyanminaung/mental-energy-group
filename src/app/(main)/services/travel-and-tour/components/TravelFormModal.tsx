@@ -22,7 +22,7 @@ interface FileValue {
   file: File;
 }
 
-const bookingSchema = yup.object({
+const travelFormSchema = yup.object({
   from: yup.string().required("From is required"),
   to: yup.string().required("To is required"),
   name: yup.string().required("Name is required"),
@@ -30,7 +30,6 @@ const bookingSchema = yup.object({
   nationality: yup.string().required("Nationality is required"),
   phone: yup.string().required("Phone is required"),
   date: yup.date().required("Preferred date is required"),
-  number_of_ticket: yup.string().required("Number of Ticket is required"),
   passport: yup
     .mixed<FileValue>()
     .required("Passport Bio is required")
@@ -42,22 +41,22 @@ const bookingSchema = yup.object({
   message: yup.string(),
 });
 
-export type BookingDto = yup.InferType<typeof bookingSchema>;
+export type TravelFormDto = yup.InferType<typeof travelFormSchema>;
 
-const TravelRequestFormModal = ({ closeModal }: ModalProps) => {
+const TravelFormModal = ({ closeModal }: ModalProps) => {
   const methods = useForm({
-    resolver: yupResolver(bookingSchema),
+    resolver: yupResolver(travelFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<BookingDto & BaseMailData>();
+  const { loading, sentMail } = useSentMail<TravelFormDto & BaseMailData>();
 
-  const onSubmit = async (data: BookingDto) => {
+  const onSubmit = async (data: TravelFormDto) => {
     const attachmentBase64 = await fileToBase64(data.passport.file);
 
     const { error } = await sentMail({
       ...data,
-      subject: `New Enquiry for [Ticket] - ${data.name}`,
-      serviceType: ServiceTypeEnum.MEDICAL_TOURISM,
+      subject: `New Enquiry for [Travel Plan] - ${data.name}`,
+      serviceType: ServiceTypeEnum.TRAVEL,
       attachment: {
         content: attachmentBase64,
         filename: data.passport.file.name,
@@ -100,11 +99,11 @@ const TravelRequestFormModal = ({ closeModal }: ModalProps) => {
 
           <div className="modal-content gap-4 flex-1 grid grid-cols-2">
             <RHFInputGroup label="From">
-              <RHFInput name="from" />
+              <RHFInput name="from" placeholder="eg. Bangkok" />
             </RHFInputGroup>
 
             <RHFInputGroup label="To">
-              <RHFInput name="to" />
+              <RHFInput name="to" placeholder="eg. Chiang Mai" />
             </RHFInputGroup>
 
             <RHFInputGroup label="Name">
@@ -123,13 +122,11 @@ const TravelRequestFormModal = ({ closeModal }: ModalProps) => {
               <RHFInput name="nationality" />
             </RHFInputGroup>
 
-            <RHFInputGroup label="Preferred Date">
-              <RHFDate name="date" />
-            </RHFInputGroup>
-
-            <RHFInputGroup label="How many ticket?">
-              <RHFInput name="number_of_ticket" />
-            </RHFInputGroup>
+            <div className="col-span-full">
+              <RHFInputGroup label="Preferred Date">
+                <RHFDate name="date" />
+              </RHFInputGroup>
+            </div>
 
             <div className="col-span-full">
               <RHFInputGroup label="Passport Bio">
@@ -159,4 +156,4 @@ const TravelRequestFormModal = ({ closeModal }: ModalProps) => {
   );
 };
 
-export default TravelRequestFormModal;
+export default TravelFormModal;

@@ -22,7 +22,7 @@ interface FileValue {
   file: File;
 }
 
-const bookingSchema = yup.object({
+const ticketFormSchema = yup.object({
   name: yup.string().required("Name is required"),
   email: emailValidation.required("Email is required"),
   nationality: yup.string().required("Nationality is required"),
@@ -40,22 +40,22 @@ const bookingSchema = yup.object({
   message: yup.string(),
 });
 
-export type BookingDto = yup.InferType<typeof bookingSchema>;
+export type TicketFormDto = yup.InferType<typeof ticketFormSchema>;
 
-const TicketRequestFormModal = ({ closeModal }: ModalProps) => {
+const TicketFormModal = ({ closeModal }: ModalProps) => {
   const methods = useForm({
-    resolver: yupResolver(bookingSchema),
+    resolver: yupResolver(ticketFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<BookingDto & BaseMailData>();
+  const { loading, sentMail } = useSentMail<TicketFormDto & BaseMailData>();
 
-  const onSubmit = async (data: BookingDto) => {
+  const onSubmit = async (data: TicketFormDto) => {
     const attachmentBase64 = await fileToBase64(data.passport.file);
 
     const { error } = await sentMail({
       ...data,
       subject: `New Enquiry for [Ticket] - ${data.name}`,
-      serviceType: ServiceTypeEnum.MEDICAL_TOURISM,
+      serviceType: ServiceTypeEnum.TICKET,
       attachment: {
         content: attachmentBase64,
         filename: data.passport.file.name,
@@ -149,4 +149,4 @@ const TicketRequestFormModal = ({ closeModal }: ModalProps) => {
   );
 };
 
-export default TicketRequestFormModal;
+export default TicketFormModal;

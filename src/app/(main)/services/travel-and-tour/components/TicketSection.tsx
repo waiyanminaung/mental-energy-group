@@ -2,7 +2,7 @@
 
 import { useModal } from "@/app/components/modal/useModal";
 import { LinkExternal01 } from "@untitledui/icons";
-import TicketRequestFormModal from "./TicketRequestFormModal";
+import TicketFormModal from "./TicketFormModal";
 
 const TicketSection = () => {
   const { show } = useModal();
@@ -30,7 +30,7 @@ const TicketSection = () => {
 
       <div>
         <button
-          onClick={() => show(<TicketRequestFormModal />)}
+          onClick={() => show(<TicketFormModal />)}
           className="bg-[#dbb481] text-white px-8 py-3 rounded-full hover:bg-[#c49c69] transition-colors duration-300 mt-4"
         >
           Make a Request

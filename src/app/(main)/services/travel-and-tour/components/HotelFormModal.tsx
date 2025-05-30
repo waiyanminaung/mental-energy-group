@@ -22,13 +22,13 @@ interface FileValue {
   file: File;
 }
 
-const bookingSchema = yup.object({
+const hotelFormSchema = yup.object({
   name: yup.string().required("Name is required"),
   email: emailValidation.required("Email is required"),
   nationality: yup.string().required("Nationality is required"),
   phone: yup.string().required("Phone is required"),
   date: yup.date().required("Preferred date is required"),
-  number_of_people: yup.string().required("Number of Ticket is required"),
+  number_of_people: yup.string().required("Number of People is required"),
   passport: yup
     .mixed<FileValue>()
     .required("Passport Bio is required")
@@ -40,22 +40,22 @@ const bookingSchema = yup.object({
   message: yup.string(),
 });
 
-export type BookingDto = yup.InferType<typeof bookingSchema>;
+export type HotelFormDto = yup.InferType<typeof hotelFormSchema>;
 
-const HotelRequestFormModal = ({ closeModal }: ModalProps) => {
+const HotelFormModal = ({ closeModal }: ModalProps) => {
   const methods = useForm({
-    resolver: yupResolver(bookingSchema),
+    resolver: yupResolver(hotelFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<BookingDto & BaseMailData>();
+  const { loading, sentMail } = useSentMail<HotelFormDto & BaseMailData>();
 
-  const onSubmit = async (data: BookingDto) => {
+  const onSubmit = async (data: HotelFormDto) => {
     const attachmentBase64 = await fileToBase64(data.passport.file);
 
     const { error } = await sentMail({
       ...data,
-      subject: `New Enquiry for [Ticket] - ${data.name}`,
-      serviceType: ServiceTypeEnum.MEDICAL_TOURISM,
+      subject: `New Enquiry for [Hotel] - ${data.name}`,
+      serviceType: ServiceTypeEnum.HOTEL,
       attachment: {
         content: attachmentBase64,
         filename: data.passport.file.name,
@@ -149,4 +149,4 @@ const HotelRequestFormModal = ({ closeModal }: ModalProps) => {
   );
 };
 
-export default HotelRequestFormModal;
+export default HotelFormModal;

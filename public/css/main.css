@@ -1078,26 +1078,6 @@ p {
   }
 }
 
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 1;
-}
-
-:-ms-input-placeholder {
-  color: inherit;
-  opacity: 1;
-}
-
-::-ms-input-placeholder {
-  color: inherit;
-  opacity: 1;
-}
-
-::placeholder {
-  color: inherit;
-  opacity: 1;
-}
-
 .background-base {
   background-color: var(--thm-base);
 }

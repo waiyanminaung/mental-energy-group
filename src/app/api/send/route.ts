@@ -3,6 +3,9 @@ import * as React from "react";
 import { MedicalTourismEmailTemplate } from "@/app/components/email/MedicalTourismTemplate";
 import { ServiceTypeEnum } from "@/app/(main)/constant";
 import { JobEmailTemplate } from "@/app/components/email/JobTemplate";
+import { TicketTemplate } from "@/app/components/email/TicketTemplate";
+import { HotelTemplate } from "@/app/components/email/HotelTemplate";
+import { TravelTemplate } from "@/app/components/email/TravelTemplate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -16,6 +19,12 @@ export async function POST(request: Request) {
           return MedicalTourismEmailTemplate;
         case ServiceTypeEnum.JOB:
           return JobEmailTemplate;
+        case ServiceTypeEnum.TICKET:
+          return TicketTemplate;
+        case ServiceTypeEnum.HOTEL:
+          return HotelTemplate;
+        case ServiceTypeEnum.TRAVEL:
+          return TravelTemplate;
         default:
           return MedicalTourismEmailTemplate;
       }
