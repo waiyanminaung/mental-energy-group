@@ -47,3 +47,23 @@ button {
   -webkit-mask-size: 100%;
   position: relative;
 }
+
+.modal-content-container {
+  background: white;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.modal-content {
+  @apply overflow-auto p-6;
+}
+
+.modal-content-header {
+  @apply px-6 py-4 border-b border-gray-200;
+}
+
+.modal-content-footer {
+  @apply p-6 border-t border-gray-200;
+}

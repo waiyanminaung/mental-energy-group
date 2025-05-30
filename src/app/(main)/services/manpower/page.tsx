@@ -20,8 +20,7 @@ export default function Page() {
       <JobsSection />
       <ContactInfoSection />
       <MakeRequestSection
-        requestDescription="Ready to start your journey? Make a request now and let us help you
-plan your perfect Thai adventure."
+        requestDescription="Ready to start your next career journey? Submit your application now and take the first step toward a rewarding opportunity with us."
         onRequestClick={() => show(<JobApplicationModal />)}
         buttonLabel="Job Apply Now"
       />

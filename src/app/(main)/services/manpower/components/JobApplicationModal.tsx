@@ -1,65 +1,53 @@
 "use client";
 
 import { RHFInput, RHFInputGroup } from "@/app/components/rhf";
-import { RHFDate } from "@/app/components/rhf/rhf-date";
-import { RHFFile } from "@/app/components/rhf/rhf-file";
-import { RHFTextarea } from "@/app/components/rhf/rhf-textarea";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
-import { fileToBase64 } from "@/utils/fileToBase64";
 import { useSentMail } from "@/app/(main)/hooks/useSentMail";
 import { BaseMailData } from "@/app/(main)/types";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
+import { RHFSelect } from "@/app/components/rhf/rhf-select";
+import { ServiceTypeEnum } from "@/app/(main)/constant";
 
-interface FileValue {
-  preview: string | null;
-  fileType: string;
-  file: File;
-}
-
-const bookingSchema = yup.object({
+const jobApplySchema = yup.object({
   name: yup.string().required("Name is required"),
   email: emailValidation.required("Email is required"),
   nationality: yup.string().required("Nationality is required"),
   phone: yup.string().required("Phone is required"),
   date: yup.date().required("Preferred date is required"),
-  number_of_people: yup.string().required("Number of Ticket is required"),
-  passport: yup
-    .mixed<FileValue>()
-    .required("Passport Bio is required")
-    .test("fileSize", "File size is too large", (value) => {
-      if (!value) return true;
-      if (!value.file) return true;
-      return value.file.size <= 5 * 1024 * 1024;
-    }),
-  message: yup.string(),
+  countries: yup.string().required("Country is required"),
+  other_country: yup.string().when("countries", (countries, schema) => {
+    return countries[0] === "Other"
+      ? schema.required("Please enter your other country")
+      : schema.optional();
+  }),
+  position: yup.string().required("Position is required"),
+  other_position: yup.string().when("position", (position, schema) => {
+    return position[0] === "Other"
+      ? schema.required("Please enter your other position")
+      : schema.optional();
+  }),
+  salary: yup.string().required("Salary is required"),
 });
 
-export type BookingDto = yup.InferType<typeof bookingSchema>;
+export type JobApplyDto = yup.InferType<typeof jobApplySchema>;
 
 const JobApplicationModal = ({ closeModal }: ModalProps) => {
   const methods = useForm({
-    resolver: yupResolver(bookingSchema),
+    resolver: yupResolver(jobApplySchema),
   });
 
-  const { loading, sentMail } = useSentMail<BookingDto & BaseMailData>();
+  const { loading, sentMail } = useSentMail<JobApplyDto & BaseMailData>();
 
-  const onSubmit = async (data: BookingDto) => {
-    const attachmentBase64 = await fileToBase64(data.passport.file);
-
+  const onSubmit = async (data: JobApplyDto) => {
     const { error } = await sentMail({
       ...data,
-      subject: `New Enquiry for [Ticket] - ${data.name}`,
-      serviceType: ServiceTypeEnum.MEDICAL_TOURISM,
-      attachment: {
-        content: attachmentBase64,
-        filename: data.passport.file.name,
-      },
+      subject: "Job Application",
+      serviceType: ServiceTypeEnum.JOB,
     });
 
     if (error) {
@@ -80,10 +68,10 @@ const JobApplicationModal = ({ closeModal }: ModalProps) => {
     <FormModalWrapper>
       <FormProvider {...methods}>
         <form
-          className="flex-1 overflow-hidden flex flex-col"
+          className="modal-content-container"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-          <div className="px-6 pt-4">
+          <div className="modal-content-header">
             <div className="flex justify-between items-center">
               <h3 className="text-2xl font-semibold">Job Application</h3>
               <button
@@ -96,7 +84,145 @@ const JobApplicationModal = ({ closeModal }: ModalProps) => {
             </div>
           </div>
 
-          <div className="p-6 gap-4 overflow-auto flex-1 grid grid-cols-2">
+          <div className="modal-content gap-6 grid">
+            <RHFInputGroup label="Date ">
+              <RHFInput type="date" name="date" />
+            </RHFInputGroup>
+
+            <div className="col-span-full space-y-3">
+              <RHFInputGroup label="Countries where you want to apply for a job">
+                <RHFSelect
+                  name="countries"
+                  options={[
+                    {
+                      label: "Singapore",
+                      value: "Singapore",
+                    },
+                    {
+                      label: "Korea",
+                      value: "Korea",
+                    },
+                    {
+                      label: "Taiwan",
+                      value: "Taiwan",
+                    },
+                    {
+                      label: "Japan",
+                      value: "Japan",
+                    },
+                    {
+                      label: "Jordan",
+                      value: "Jordan",
+                    },
+                    {
+                      label: "Saudi Arabia",
+                      value: "Saudi Arabia",
+                    },
+                    {
+                      label: "Israel",
+                      value: "Israel",
+                    },
+                    {
+                      label: "Other",
+                      value: "Other",
+                    },
+                  ]}
+                />
+              </RHFInputGroup>
+
+              {methods.watch("countries") === "Other" && (
+                <div className="bg-gray-100 p-2 rounded-md">
+                  <RHFInputGroup>
+                    <RHFInput
+                      name="other_country"
+                      placeholder="Please enter your other country"
+                    />
+                  </RHFInputGroup>
+                </div>
+              )}
+            </div>
+
+            <div className="col-span-full space-y-3">
+              <RHFInputGroup label="Position you wish to apply for">
+                <RHFSelect
+                  name="position"
+                  options={[
+                    {
+                      label: "General workers",
+                      value: "General workers",
+                    },
+                    {
+                      label: "Factory workers",
+                      value: "Factory workers",
+                    },
+                    {
+                      label: "Cleaning staff",
+                      value: "Cleaning staff",
+                    },
+                    {
+                      label: "Delivery Driver",
+                      value: "Delivery Driver",
+                    },
+                    {
+                      label: "Machine Operator",
+                      value: "Machine Operator",
+                    },
+                    {
+                      label: "Packaging staff",
+                      value: "Packaging staff",
+                    },
+                    {
+                      label: "Forklift Driver",
+                      value: "Forklift Driver",
+                    },
+                    {
+                      label: "Electrician",
+                      value: "Electrician",
+                    },
+                    {
+                      label: "Construction worker",
+                      value: "Construction worker",
+                    },
+                    {
+                      label: "Capenter",
+                      value: "Capenter",
+                    },
+                    {
+                      label: "Morson",
+                      value: "Morson",
+                    },
+                    {
+                      label: "Painter",
+                      value: "Painter",
+                    },
+                    {
+                      label: "Welder",
+                      value: "Welder",
+                    },
+                    {
+                      label: "Option 14",
+                      value: "Option 14",
+                    },
+                    {
+                      label: "Other",
+                      value: "Other",
+                    },
+                  ]}
+                />
+              </RHFInputGroup>
+
+              {methods.watch("position") === "Other" && (
+                <div className="bg-gray-100 p-2 rounded-md">
+                  <RHFInputGroup>
+                    <RHFInput
+                      name="other_position"
+                      placeholder="Please enter your other position"
+                    />
+                  </RHFInputGroup>
+                </div>
+              )}
+            </div>
+
             <RHFInputGroup label="Name">
               <RHFInput name="name" />
             </RHFInputGroup>
@@ -113,34 +239,18 @@ const JobApplicationModal = ({ closeModal }: ModalProps) => {
               <RHFInput name="nationality" />
             </RHFInputGroup>
 
-            <RHFInputGroup label="Preferred Date">
-              <RHFDate name="date" />
+            <RHFInputGroup label="Salary">
+              <RHFInput name="salary" />
             </RHFInputGroup>
-
-            <RHFInputGroup label="How many people?">
-              <RHFInput name="number_of_people" />
-            </RHFInputGroup>
-
-            <div className="col-span-full">
-              <RHFInputGroup label="Passport Bio">
-                <RHFFile name="passport" accept="image/*,.pdf" />
-              </RHFInputGroup>
-            </div>
-
-            <div className="col-span-full">
-              <RHFInputGroup label="Message">
-                <RHFTextarea name="message" />
-              </RHFInputGroup>
-            </div>
           </div>
 
-          <div className="p-6 pt-0">
+          <div className="modal-content-footer">
             <button
               type="submit"
               disabled={loading}
               className="w-full bg-[#dbb481] text-white py-2 px-4 rounded-lg hover:bg-[#c49c69] transition-colors duration-300 sticky bottom-0 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Submitting..." : "Submit Booking"}
+              {loading ? "Submitting..." : "Apply Now"}
             </button>
           </div>
         </form>

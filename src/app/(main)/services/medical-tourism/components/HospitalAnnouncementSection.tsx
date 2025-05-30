@@ -3,11 +3,17 @@
 import { CollectionEnum } from "@/app/(main)/constant";
 import { Job } from "@/app/admin/(dashboard)/jobs/type";
 import Button from "@/app/admin/components/Button";
+import { useModal } from "@/app/components/modal/useModal";
 import { useFirestoreDB } from "@/hooks/useFirestoreDB";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import ContentDetailModal from "../../components/ContentDetailModal";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { ArrowLeft, ArrowRight } from "@untitledui/icons";
 
 const HospitalAnnouncementSection = () => {
+  const { show } = useModal();
   const { data, loading } = useFirestoreDB<Job>(
     CollectionEnum.HOSPITAL_ANNOUNCEMENTS
   );
@@ -20,18 +26,37 @@ const HospitalAnnouncementSection = () => {
 
   return (
     <div className="mb-10">
-      <h3 className="text-3xl font-bold mb-4">Latest Posts</h3>
+      <div className="flex w-full justify-between items-center">
+        <h3 className="text-3xl font-bold mb-4 flex-1">Announcements</h3>
+        <div>
+          <button
+            id="hospital__swiper-button-prev"
+            className="border size-8 rounded-sm hover:bg-gray-100 border-gray-400 me-3"
+          >
+            <ArrowLeft width={18} height={18} className="m-auto" />
+          </button>
+          <button
+            id="hospital__swiper-button-next"
+            className="border size-8 rounded-sm hover:bg-gray-100 border-gray-400"
+          >
+            <ArrowRight width={18} height={18} className="m-auto" />
+          </button>
+        </div>
+      </div>
       <div>
         <Swiper
+          modules={[Autoplay, Navigation]}
+          loop={true}
+          effect="fade"
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           spaceBetween={16}
           slidesPerView={2}
           navigation={{
-            nextEl: "#team-home__swiper-button-next",
-            prevEl: "#team-home__swiper-button-prev",
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
+            nextEl: "#hospital__swiper-button-next",
+            prevEl: "#hospital__swiper-button-prev",
           }}
           breakpoints={{
             0: {
@@ -62,7 +87,9 @@ const HospitalAnnouncementSection = () => {
                   <Button
                     fullWidth
                     variant="primary"
-                    onClick={() => alert("coming soon")}
+                    onClick={() => {
+                      show(<ContentDetailModal data={item} />);
+                    }}
                   >
                     View Details
                   </Button>

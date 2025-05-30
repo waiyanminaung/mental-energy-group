@@ -44,7 +44,7 @@ const bookingSchema = yup.object({
 
 export type BookingDto = yup.InferType<typeof bookingSchema>;
 
-const MedicalTourismBookingFormModal = ({
+const MedicalTourismFormModal = ({
   data,
   closeModal,
 }: {
@@ -91,7 +91,7 @@ const MedicalTourismBookingFormModal = ({
     <FormModalWrapper>
       <FormProvider {...methods}>
         <form
-          className="flex-1 overflow-hidden flex flex-col"
+          className="modal-content-container"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           <div className="px-6 pt-4">
@@ -109,7 +109,7 @@ const MedicalTourismBookingFormModal = ({
             </div>
           </div>
 
-          <div className="p-6 gap-4 overflow-auto flex-1 grid grid-cols-2">
+          <div className="modal-content p-6 gap-4 flex-1 grid grid-cols-2">
             <RHFInputGroup label="Patient Name">
               <RHFInput name="name" />
             </RHFInputGroup>
@@ -160,4 +160,4 @@ const MedicalTourismBookingFormModal = ({
   );
 };
 
-export default MedicalTourismBookingFormModal;
+export default MedicalTourismFormModal;

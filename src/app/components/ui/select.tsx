@@ -73,7 +73,7 @@ const Select: FC<SelectProps> = ({
         type="button"
         onClick={handleToggle}
         className={classNames(
-          "input-ring rounded-md shadow-xs text-sm font-normal text-body px-3 focus:outline-none hover:bg-white w-full justify-between border-input h-10 border",
+          "input-ring rounded-md shadow-xs text-sm font-normal text-body px-3 focus:outline-none hover:bg-white w-full justify-between border-input h-10 border text-start",
           !selected?.label && "text-placeholder",
           selectButtonClassName
         )}

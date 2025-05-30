@@ -2,7 +2,8 @@ import { ServiceTypeEnum } from "../constant";
 
 export type ServiceType =
   | ServiceTypeEnum.MEDICAL_TOURISM
-  | ServiceTypeEnum.TICKET;
+  | ServiceTypeEnum.TICKET
+  | ServiceTypeEnum.JOB;
 
 export interface BaseMailData {
   subject: string;

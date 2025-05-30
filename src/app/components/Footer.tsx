@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { contactInfo } from "../(main)/data";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -29,7 +30,9 @@ const Footer = () => {
                   <div className="footer-widget__about-phone-content">
                     <span>Call US</span>
                     <h3>
-                      <a href="tel:+660906394022">+66 090 639 4022</a>
+                      <a href={contactInfo.phone.link}>
+                        {contactInfo.phone.value}
+                      </a>
                     </h3>
                   </div>
                 </div>
@@ -65,9 +68,9 @@ const Footer = () => {
                 <h3>Contact</h3>
                 <ul className="list-unstyled footer-widget__contact-list">
                   <li>
-                    <a href="mailto:smallbusinesslike@gmail.com">
+                    <a href={contactInfo.email.link}>
                       <i className="pylon-icon-email1"></i>
-                      smallbusinesslike@gmail.com
+                      {contactInfo.email.value}
                     </a>
                   </li>
                   <li>
@@ -78,9 +81,8 @@ const Footer = () => {
                   </li>
                   <li>
                     <a href="#">
-                      <i className="pylon-icon-pin1"></i>29 Sathorn 11 Alley,
-                      Soi Saint Louis 3 Yaek 9, Yannawa, Sathorn, Bangkok,
-                      Thailand, Bangkok
+                      <i className="pylon-icon-pin1"></i>
+                      {contactInfo.address.value}
                     </a>
                   </li>
                 </ul>

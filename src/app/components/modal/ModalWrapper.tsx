@@ -11,27 +11,17 @@ const ModalWrapper = ({
 }) => {
   return (
     <div
-      className={"pointer-events-auto"}
+      className="pointer-events-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
       {/* Backdrop  */}
-      <div
-        className={`fixed inset-0 bg-gray-500/75 transition-opacity
-          "ease-out duration-300 opacity-100"
-          `}
-        aria-hidden="true"
-      ></div>
+      <div className="fixed inset-0 bg-gray-500/75 transition-opacity ease-out duration-300 opacity-100 z-20" />
 
       {/* Modal Dialog */}
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto flex flex-col ">
-        <div
-          className={classNames(
-            "flex rounded-lg bg-white max-w-lg m-auto w-full max-h-[90vh] overflow-auto",
-            className
-          )}
-        >
+      <div className="fixed inset-0 z-30 w-screen flex flex-col">
+        <div className={classNames("max-w-lg m-auto w-full", className)}>
           {children}
         </div>
       </div>

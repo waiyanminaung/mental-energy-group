@@ -1,6 +1,11 @@
 "use client";
 
+import { useModal } from "@/app/components/modal/useModal";
+import HotelRequestFormModal from "./CarRentalRequestFormModal";
+
 const HotelSection = () => {
+  const { show } = useModal();
+
   return (
     <div className="flex flex-col justify-between shadow-lg border-gray-200 p-8 rounded-lg">
       <div className="space-y-2">
@@ -14,7 +19,10 @@ const HotelSection = () => {
       </div>
 
       <div>
-        <button className="bg-[#dbb481] text-white px-8 py-3 rounded-full hover:bg-[#c49c69] transition-colors duration-300 mt-4">
+        <button
+          onClick={() => show(<HotelRequestFormModal />)}
+          className="bg-[#dbb481] text-white px-8 py-3 rounded-full hover:bg-[#c49c69] transition-colors duration-300 mt-4"
+        >
           Make a Request
         </button>
       </div>

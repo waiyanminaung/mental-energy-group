@@ -1,7 +1,8 @@
 import { Resend } from "resend";
 import * as React from "react";
-import { MedicalTourismEmailTemplate } from "@/app/components/email/medical-tourism-template";
+import { MedicalTourismEmailTemplate } from "@/app/components/email/MedicalTourismTemplate";
 import { ServiceTypeEnum } from "@/app/(main)/constant";
+import { JobEmailTemplate } from "@/app/components/email/JobTemplate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -13,13 +14,15 @@ export async function POST(request: Request) {
       switch (res.serviceType) {
         case ServiceTypeEnum.MEDICAL_TOURISM:
           return MedicalTourismEmailTemplate;
+        case ServiceTypeEnum.JOB:
+          return JobEmailTemplate;
         default:
           return MedicalTourismEmailTemplate;
       }
     })();
 
     const { data, error } = await resend.emails.send({
-      from: `${res.name} <onboarding@resend.dev>`,
+      from: `${res.name} (via Mental Energy Group Website) <onboarding@resend.dev>`,
       to: ["info.wyma@gmail.com"],
       subject,
       react: DynamicTemplate({

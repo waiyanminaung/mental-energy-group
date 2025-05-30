@@ -3,15 +3,13 @@
 import Image from "next/image";
 import { Hospital } from "../type";
 import { useModal } from "@/app/components/modal/useModal";
-import MedicalTourismBookingFormModal from "./MedicalTourismBookingFormModal";
+import MedicalTourismFormModal from "./MedicalTourismFormModal";
 
-interface MedicalTourismBookingFormModalProps {
+interface MedicalTourismFormModalProps {
   data: Hospital;
 }
 
-export default function HospitalCard({
-  data,
-}: MedicalTourismBookingFormModalProps) {
+export default function HospitalCard({ data }: MedicalTourismFormModalProps) {
   const { show } = useModal();
 
   return (
@@ -24,7 +22,7 @@ export default function HospitalCard({
         <button
           className="inline-block bg-[#dbb481] text-white px-6 py-2 rounded-full hover:bg-[#c49c69] transition-colors duration-300"
           onClick={() => {
-            show(<MedicalTourismBookingFormModal data={data} />);
+            show(<MedicalTourismFormModal data={data} />);
           }}
         >
           Book Now

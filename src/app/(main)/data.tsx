@@ -107,3 +107,54 @@ export const faqData = [
       "Yes! We provide real estate assistance to help you find affordable and convenient housing options tailored to your needs and budget.",
   },
 ];
+
+export const contactInfo = {
+  phone: {
+    value: "+66 123 456 789",
+    link: "tel:+66 123 456 789",
+  },
+  email: {
+    value: "smallbusinesslike@gmail.com",
+    link: `mailto:smallbusinesslike@gmail.com`,
+  },
+  address: {
+    value:
+      "Soi Saint Louis 3 Yaek 9, Yannawa, Sathorn, Bangkok, Thailand, Bangkok",
+    link: "#",
+  },
+  facebook: {
+    value: "facebook.com/smallbusinesslike",
+    link: "https://www.facebook.com/smallbusinesslike",
+  },
+  line: {
+    value: "@mgroup",
+    link: `https://line.me/R/ti/p/@mgroup`,
+  },
+};
+
+export const contactInfoData = [
+  {
+    icon: "/icons/line.svg",
+    label: "Chat on LINE",
+    description: "Connect with us on LINE",
+    value: contactInfo.line.value,
+    link: contactInfo.line.link,
+    iconColor: "text-green-500",
+  },
+  {
+    icon: "/icons/mail.svg",
+    label: "Email Us",
+    description: "Send us an email",
+    value: contactInfo.email.value,
+    link: contactInfo.email.link,
+    iconColor: "text-purple-500",
+  },
+  {
+    icon: "/icons/phone.svg",
+    label: "Call or Text",
+    description: "Reach us by phone",
+    value: contactInfo.phone.value,
+    link: contactInfo.phone.link,
+    iconColor: "text-red-500",
+  },
+];

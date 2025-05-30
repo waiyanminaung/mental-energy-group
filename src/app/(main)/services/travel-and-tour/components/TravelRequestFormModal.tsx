@@ -82,10 +82,10 @@ const TravelRequestFormModal = ({ closeModal }: ModalProps) => {
     <FormModalWrapper>
       <FormProvider {...methods}>
         <form
-          className="flex-1 overflow-hidden flex flex-col"
+          className="modal-content-container"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-          <div className="px-6 pt-4">
+          <div className="modal-content-header">
             <div className="flex justify-between items-center">
               <h3 className="text-2xl font-semibold">Travel Planing</h3>
               <button
@@ -98,7 +98,7 @@ const TravelRequestFormModal = ({ closeModal }: ModalProps) => {
             </div>
           </div>
 
-          <div className="p-6 gap-4 overflow-auto flex-1 grid grid-cols-2">
+          <div className="modal-content gap-4 flex-1 grid grid-cols-2">
             <RHFInputGroup label="From">
               <RHFInput name="from" />
             </RHFInputGroup>
@@ -144,7 +144,7 @@ const TravelRequestFormModal = ({ closeModal }: ModalProps) => {
             </div>
           </div>
 
-          <div className="p-6 pt-0">
+          <div className="modal-content-footer">
             <button
               type="submit"
               disabled={loading}

@@ -7,9 +7,9 @@ import Image from "next/image";
 const teamMembers = [
   {
     id: 1,
-    name: "Jerome Lindsey",
-    role: "Expert Agent",
-    image: "/images/team/team-1-1.png",
+    name: "Lwin Me Me Zaw",
+    role: "Professional Translator",
+    image: "/images/team/Lwin-Me-Me-Zaw.jpg",
     social: {
       facebook: "#",
       twitter: "#",
@@ -21,7 +21,7 @@ const teamMembers = [
     id: 2,
     name: "Ian Barker",
     role: "Expert Agent",
-    image: "/images/team/team-1-2.png",
+    image: "/images/team/team.png",
     social: {
       facebook: "#",
       twitter: "#",
@@ -33,7 +33,7 @@ const teamMembers = [
     id: 3,
     name: "Nannie Robinson",
     role: "Expert Agent",
-    image: "/images/team/team-1-3.png",
+    image: "/images/team/team.png",
     social: {
       facebook: "#",
       twitter: "#",
@@ -45,7 +45,7 @@ const teamMembers = [
     id: 4,
     name: "Team Member 4",
     role: "Expert Agent",
-    image: "/images/team/team-1-4.png",
+    image: "/images/team/team.png",
     social: {
       facebook: "#",
       twitter: "#",
@@ -141,7 +141,12 @@ const TeamSection = () => {
             <SwiperSlide key={member.id}>
               <div className="team-one__card">
                 <div className="team-one__image">
-                  <Image src={member.image} alt="" width={370} height={430} />
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={370}
+                    height={430}
+                  />
                 </div>
                 <div className="team-one__content">
                   <h3>{member.name}</h3>

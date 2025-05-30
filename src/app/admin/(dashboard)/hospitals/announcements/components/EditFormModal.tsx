@@ -108,7 +108,7 @@ const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
   };
 
   return (
-    <FormModalWrapper>
+    <FormModalWrapper className="bg-white">
       <FormProvider {...methods}>
         <form
           className="flex-1 overflow-hidden flex flex-col h-full"

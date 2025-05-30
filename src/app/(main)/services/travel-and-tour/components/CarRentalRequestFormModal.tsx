@@ -80,10 +80,10 @@ const HotelRequestFormModal = ({ closeModal }: ModalProps) => {
     <FormModalWrapper>
       <FormProvider {...methods}>
         <form
-          className="flex-1 overflow-hidden flex flex-col"
+          className="modal-content-container"
           onSubmit={methods.handleSubmit(onSubmit)}
         >
-          <div className="px-6 pt-4">
+          <div className="modal-content-header">
             <div className="flex justify-between items-center">
               <h3 className="text-2xl font-semibold">Hotel Booking</h3>
               <button
@@ -96,7 +96,7 @@ const HotelRequestFormModal = ({ closeModal }: ModalProps) => {
             </div>
           </div>
 
-          <div className="p-6 gap-4 overflow-auto flex-1 grid grid-cols-2">
+          <div className="modal-content gap-4 flex-1 grid grid-cols-2">
             <RHFInputGroup label="Name">
               <RHFInput name="name" />
             </RHFInputGroup>
@@ -134,7 +134,7 @@ const HotelRequestFormModal = ({ closeModal }: ModalProps) => {
             </div>
           </div>
 
-          <div className="p-6 pt-0">
+          <div className="modal-content-footer">
             <button
               type="submit"
               disabled={loading}
