@@ -5,13 +5,14 @@ export type ServiceType =
   | ServiceTypeEnum.TICKET
   | ServiceTypeEnum.JOB
   | ServiceTypeEnum.HOTEL
-  | ServiceTypeEnum.TRAVEL;
+  | ServiceTypeEnum.TRAVEL
+  | ServiceTypeEnum.CAR_RENTAL;
 
 export interface BaseMailData {
   subject: string;
   serviceType: ServiceType;
-  attachment?: {
+  attachments?: {
     content: string;
     filename: string;
-  };
+  }[];
 }

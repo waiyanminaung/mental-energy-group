@@ -158,3 +158,94 @@ export const contactInfoData = [
     iconColor: "text-red-500",
   },
 ];
+
+export const carRentalData = [
+  {
+    id: "e8f1d09b-1f87-4f85-93d1-9f5b9b6e0a01",
+    model: "Sedans",
+    selfDrive: 900,
+    withDriver: 1900,
+    deposit: 5000,
+    image: "/images/car-rental/sedan.jpg",
+  },
+  {
+    id: "f1e7a5f9-3e4d-4c28-95f3-02dbe7613f38",
+    model: "Alphard",
+    selfDrive: 1800,
+    withDriver: 2800,
+    deposit: 5000,
+    image: "/images/car-rental/alphard.jpg",
+  },
+  {
+    id: "2c91a621-f7f3-4291-88ae-22aa3c43b0d3",
+    model: "Ventury & Van",
+    selfDrive: 1800,
+    withDriver: 2800,
+    deposit: 5000,
+    image: "/images/car-rental/van.webp",
+  },
+  {
+    id: "76a930b1-10f0-4c3f-bd94-5987e4b0c152",
+    model: "Fortuner",
+    selfDrive: 1500,
+    withDriver: 2500,
+    deposit: 5000,
+    image: "/images/car-rental/fortuner.webp",
+  },
+  {
+    id: "90c833f7-4d86-41ee-b3a0-bcf7fce8c1e2",
+    model: "Innova",
+    selfDrive: 1200,
+    withDriver: 2200,
+    deposit: 5000,
+    image: "/images/car-rental/innova.jpg",
+  },
+  {
+    id: "b0eac7e4-f174-409a-9e45-61d4a58d0fc5",
+    model: "Commuter & VAN",
+    selfDrive: 2000,
+    withDriver: 3000,
+    deposit: 10000,
+    image: "/images/car-rental/commuter.webp",
+  },
+];
+
+export type CarRentalType = (typeof carRentalData)[number];
+
+export const destinationsData = [
+  {
+    id: 1,
+    title: "Bangkok",
+    image: "/images/destinations/bangkok.jpg",
+  },
+  {
+    id: 2,
+    title: "Phuket",
+    image: "/images/destinations/phuket.jpg",
+  },
+  {
+    id: 3,
+    title: "Chiang Mai",
+    image: "/images/destinations/chiangmai.jpg",
+  },
+  {
+    id: 4,
+    title: "Pattaya",
+    image: "/images/destinations/pattaya.jpg",
+  },
+  {
+    id: 5,
+    title: "Ayutthaya",
+    image: "/images/destinations/ayutthaya.jpg",
+  },
+  {
+    id: 6,
+    title: "Krabi",
+    image: "/images/destinations/krabi.jpg",
+  },
+  {
+    id: 7,
+    title: "kanchanaburi",
+    image: "/images/destinations/kanchanaburi.jpg",
+  },
+];

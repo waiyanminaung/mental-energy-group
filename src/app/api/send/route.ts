@@ -6,6 +6,7 @@ import { JobEmailTemplate } from "@/app/components/email/JobTemplate";
 import { TicketTemplate } from "@/app/components/email/TicketTemplate";
 import { HotelTemplate } from "@/app/components/email/HotelTemplate";
 import { TravelTemplate } from "@/app/components/email/TravelTemplate";
+import { CarRentalTemplate } from "@/app/components/email/CarRentalTemplate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -25,6 +26,8 @@ export async function POST(request: Request) {
           return HotelTemplate;
         case ServiceTypeEnum.TRAVEL:
           return TravelTemplate;
+        case ServiceTypeEnum.CAR_RENTAL:
+          return CarRentalTemplate;
         default:
           return MedicalTourismEmailTemplate;
       }
@@ -38,7 +41,7 @@ export async function POST(request: Request) {
         ...res,
         subject,
       }) as React.ReactElement,
-      attachments: res.attachment ? [res.attachment] : [],
+      attachments: res.attachments || [],
     });
 
     if (error) {

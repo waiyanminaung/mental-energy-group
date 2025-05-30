@@ -56,10 +56,12 @@ const HotelFormModal = ({ closeModal }: ModalProps) => {
       ...data,
       subject: `New Enquiry for [Hotel] - ${data.name}`,
       serviceType: ServiceTypeEnum.HOTEL,
-      attachment: {
-        content: attachmentBase64,
-        filename: data.passport.file.name,
-      },
+      attachments: [
+        {
+          content: attachmentBase64,
+          filename: data.passport.file.name,
+        },
+      ],
     });
 
     if (error) {

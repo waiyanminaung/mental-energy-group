@@ -57,10 +57,12 @@ const TravelFormModal = ({ closeModal }: ModalProps) => {
       ...data,
       subject: `New Enquiry for [Travel Plan] - ${data.name}`,
       serviceType: ServiceTypeEnum.TRAVEL,
-      attachment: {
-        content: attachmentBase64,
-        filename: data.passport.file.name,
-      },
+      attachments: [
+        {
+          content: attachmentBase64,
+          filename: data.passport.file.name,
+        },
+      ],
     });
 
     if (error) {

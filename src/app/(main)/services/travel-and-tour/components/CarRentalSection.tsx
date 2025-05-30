@@ -2,39 +2,8 @@
 
 import Image from "next/image";
 import { useModal } from "@/app/components/modal/useModal";
-import CarRentalRequestFormModal from "./CarRentalRequestFormModal";
-
-interface CarOption {
-  id: number;
-  title: string;
-  model: string;
-  image: string;
-  startingPrice: number;
-}
-
-const carOptions: CarOption[] = [
-  {
-    id: 1,
-    title: "Luxury Sedan",
-    model: "Toyota Camry or Similar",
-    image: "/images/cars/camry.jpg",
-    startingPrice: 3000,
-  },
-  {
-    id: 2,
-    title: "Premium SUV",
-    model: "Toyota Fortuner or Similar",
-    image: "/images/cars/fortuner.jpg",
-    startingPrice: 4500,
-  },
-  {
-    id: 3,
-    title: "Spacious Van",
-    model: "Toyota Commuter or Similar",
-    image: "/images/cars/commuter.jpg",
-    startingPrice: 5000,
-  },
-];
+import { carRentalData } from "@/app/(main)/data";
+import CarRentalFormModal from "./CarRentalFormModal";
 
 const CarRentalSection = () => {
   const { show } = useModal();
@@ -51,33 +20,40 @@ const CarRentalSection = () => {
         </p>
       </div>
 
-      {/* Car Options Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {carOptions.map((car) => (
+      {/* Car Options List */}
+      <div className="space-y-6">
+        {carRentalData.map((car) => (
           <div
             key={car.id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105"
+            className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] flex flex-col sm:flex-row"
           >
-            <div className="relative h-48">
+            <div className="relative w-full sm:w-52 h-48 sm:h-auto flex-shrink-0">
               <Image
                 src={car.image}
-                alt={car.title}
+                alt={car.model}
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{car.title}</h3>
-              <p className="text-gray-600 mb-2">{car.model}</p>
-              <p className="text-lg font-semibold text-[#dbb481] mb-4">
-                Start From {car.startingPrice.toLocaleString()} THB
-              </p>
-              <button
-                onClick={() => show(<CarRentalRequestFormModal />)}
-                className="w-full bg-[#dbb481] text-white px-6 py-2 rounded-full hover:bg-[#c49c69] transition-colors duration-300"
-              >
-                Inquire Now
-              </button>
+            <div className="p-6 flex-grow">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">{car.model}</h3>
+                  <div className="space-y-1 text-gray-600">
+                    <p>Self Drive: {car.selfDrive.toLocaleString()} THB/day</p>
+                    <p>
+                      With Driver: {car.withDriver.toLocaleString()} THB/day
+                    </p>
+                    <p>Deposit: {car.deposit.toLocaleString()} THB</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => show(<CarRentalFormModal data={car} />)}
+                  className="w-full sm:w-auto bg-[#dbb481] text-white px-6 py-2 rounded-full hover:bg-[#c49c69] transition-colors duration-300 whitespace-nowrap self-end sm:self-start"
+                >
+                  Inquire Now
+                </button>
+              </div>
             </div>
           </div>
         ))}

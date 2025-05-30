@@ -1,7 +1,7 @@
 "use client";
 
 import { useModal } from "@/app/components/modal/useModal";
-import HotelRequestFormModal from "./CarRentalRequestFormModal";
+import HotelRequestFormModal from "./CarRentalFormModal";
 
 const HotelSection = () => {
   const { show } = useModal();

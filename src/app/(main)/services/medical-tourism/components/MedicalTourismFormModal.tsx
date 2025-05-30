@@ -67,10 +67,12 @@ const MedicalTourismFormModal = ({
       ...data,
       subject: `New Enquiry for [Medical Tourism] - ${data.title}`,
       serviceType: ServiceTypeEnum.MEDICAL_TOURISM,
-      attachment: {
-        content: attachmentBase64,
-        filename: data.passport.file.name,
-      },
+      attachments: [
+        {
+          content: attachmentBase64,
+          filename: data.passport.file.name,
+        },
+      ],
     });
 
     if (error) {

@@ -56,10 +56,12 @@ const TicketFormModal = ({ closeModal }: ModalProps) => {
       ...data,
       subject: `New Enquiry for [Ticket] - ${data.name}`,
       serviceType: ServiceTypeEnum.TICKET,
-      attachment: {
-        content: attachmentBase64,
-        filename: data.passport.file.name,
-      },
+      attachments: [
+        {
+          content: attachmentBase64,
+          filename: data.passport.file.name,
+        },
+      ],
     });
 
     if (error) {
