@@ -50,7 +50,7 @@ export default function HomePage() {
             >
               <div className="about-two__image">
                 <Image
-                  src="/images/about.jpeg"
+                  src="/images/about.jpg"
                   alt=""
                   width={500}
                   height={602}
