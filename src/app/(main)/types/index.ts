@@ -7,7 +7,8 @@ export type ServiceType =
   | ServiceTypeEnum.HOTEL
   | ServiceTypeEnum.TRAVEL
   | ServiceTypeEnum.CAR_RENTAL
-  | ServiceTypeEnum.REAL_ESTATE;
+  | ServiceTypeEnum.REAL_ESTATE
+  | ServiceTypeEnum.OTHER;
 
 export interface BaseMailData {
   subject: string;

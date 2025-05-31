@@ -6,6 +6,7 @@ export enum ServiceTypeEnum {
   TRAVEL = "travel",
   CAR_RENTAL = "car rental",
   REAL_ESTATE = "real estate",
+  OTHER = "other",
 }
 
 export enum CollectionEnum {

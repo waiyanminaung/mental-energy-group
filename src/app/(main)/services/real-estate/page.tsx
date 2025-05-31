@@ -20,9 +20,9 @@ export default function RealEstatePage() {
       <ContactInfoSection />
 
       <MakeRequestSection
-        requestDescription="Looking for your next property or investment opportunity? Submit your inquiry today and let us help you find the perfect match."
+        requestDescription="Looking for your next property or investment opportunity? Submit your enquiry today and let us help you find the perfect match."
         onRequestClick={() => show(<RealEstateFormModal />)}
-        buttonLabel="Get Inquiry Now"
+        buttonLabel="Get Enquiry Now"
       />
     </div>
   );

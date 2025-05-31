@@ -12,32 +12,33 @@ import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
-import { RHFSelect } from "@/app/components/rhf/rhf-select";
 
-const realEstateFormSchema = yup.object({
+const otherServicesFormSchema = yup.object({
   name: yup.string().required("Name is required"),
   email: emailValidation.required("Email is required"),
   nationality: yup.string().required("Nationality is required"),
   phone: yup.string().required("Phone is required"),
-  requestType: yup.string().required("Request Type is required"),
-  location: yup.string().required("Location is required"),
   message: yup.string(),
 });
 
-export type RealEstateFormDto = yup.InferType<typeof realEstateFormSchema>;
+export type OtherServicesFormDto = yup.InferType<
+  typeof otherServicesFormSchema
+>;
 
-const RealEstateFormModal = ({ closeModal }: ModalProps) => {
+const OtherServicesFormModal = ({ closeModal }: ModalProps) => {
   const methods = useForm({
-    resolver: yupResolver(realEstateFormSchema),
+    resolver: yupResolver(otherServicesFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<RealEstateFormDto & BaseMailData>();
+  const { loading, sentMail } = useSentMail<
+    OtherServicesFormDto & BaseMailData
+  >();
 
-  const onSubmit = async (data: RealEstateFormDto) => {
+  const onSubmit = async (data: OtherServicesFormDto) => {
     const { error } = await sentMail({
       ...data,
-      subject: `New Enquiry for [Real Estate]`,
-      serviceType: ServiceTypeEnum.REAL_ESTATE,
+      subject: `New Enquiry for [Other Services]`,
+      serviceType: ServiceTypeEnum.OTHER,
     });
 
     if (error) {
@@ -63,9 +64,7 @@ const RealEstateFormModal = ({ closeModal }: ModalProps) => {
         >
           <div className="modal-content-header">
             <div className="flex justify-between items-center">
-              <h3 className="text-2xl font-semibold">
-                Submit Your Real Estate Enquiry
-              </h3>
+              <h3 className="text-2xl font-semibold">Submit Your Enquiry</h3>
               <button
                 type="button"
                 onClick={handleClose}
@@ -93,30 +92,6 @@ const RealEstateFormModal = ({ closeModal }: ModalProps) => {
               <RHFInput name="nationality" />
             </RHFInputGroup>
 
-            <RHFInputGroup label="I'm Looking To:">
-              <RHFSelect
-                name="requestType"
-                options={[
-                  {
-                    label: "Buy",
-                    value: "Buy",
-                  },
-                  {
-                    label: "Rent",
-                    value: "Rent",
-                  },
-                  {
-                    label: "Sell",
-                    value: "Sell",
-                  },
-                ]}
-              />
-            </RHFInputGroup>
-
-            <RHFInputGroup label="Interested Location">
-              <RHFInput name="location" />
-            </RHFInputGroup>
-
             <div className="col-span-full">
               <RHFInputGroup label="Message">
                 <RHFTextarea name="message" />
@@ -139,4 +114,4 @@ const RealEstateFormModal = ({ closeModal }: ModalProps) => {
   );
 };
 
-export default RealEstateFormModal;
+export default OtherServicesFormModal;
