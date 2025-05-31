@@ -3,16 +3,20 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Image from "next/image";
+import { Autoplay } from "swiper/modules";
 
 const LogoSlider = ({ data }: { data: string[] }) => {
   return (
-    <div className="client-carousel pt-80 pb-80">
+    <div className="client-carousel py-10">
       <div className="container">
         <Swiper
+          modules={[Autoplay]}
           spaceBetween={50}
           slidesPerView={5}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           breakpoints={{
             "0": {
               spaceBetween: 30,

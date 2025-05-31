@@ -79,12 +79,20 @@ export const highlightData = [
 ];
 
 export const logosData = [
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
-  "/images/resources/brand-1-1.png",
+  "/images/partners/King-Chulalongkorn-Memorial-Hospital.png",
+  "/images/partners/Siriraj-Piyamaharajkarun.jpg",
+  "/images/partners/vimut.png",
+  "/images/partners/Med-Park.png",
+  "/images/partners/Bumrungrad-International-Hospital.png",
+  "/images/partners/Bangkok-Hospital.jpeg",
+  "/images/partners/BNH.jpg",
+  "/images/partners/BIDH.png",
+  "/images/partners/Rutnin-Eye-Hospital.png",
+  "/images/partners/Bangkok-Eye.jpg",
+  "/images/partners/masterpiece.jpg",
+  "/images/partners/lelux.jpg",
+  "/images/partners/Asia.jpg",
+  "/images/partners/kamol.jpg",
 ];
 
 export const faqData = [
@@ -247,5 +255,56 @@ export const destinationsData = [
     id: 7,
     title: "kanchanaburi",
     image: "/images/destinations/kanchanaburi.jpg",
+  },
+];
+
+export const teamMembersData = [
+  {
+    id: 1,
+    name: "Lwin Me Me Zaw",
+    role: "Professional Translator",
+    image: "/images/team/Lwin-Me-Me-Zaw.jpg",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      pinterest: "#",
+      instagram: "#",
+    },
+  },
+  {
+    id: 2,
+    name: "Ian Barker",
+    role: "Expert Agent",
+    image: "/images/team/team2.jpg",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      pinterest: "#",
+      instagram: "#",
+    },
+  },
+  {
+    id: 3,
+    name: "Nannie Robinson",
+    role: "Expert Agent",
+    image: "/images/team/team.png",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      pinterest: "#",
+      instagram: "#",
+    },
+  },
+  {
+    id: 4,
+    name: "Team Member 4",
+    role: "Expert Agent",
+    image: "/images/team/team.png",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      pinterest: "#",
+      instagram: "#",
+    },
   },
 ];

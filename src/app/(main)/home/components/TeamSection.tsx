@@ -3,57 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
-
-const teamMembers = [
-  {
-    id: 1,
-    name: "Lwin Me Me Zaw",
-    role: "Professional Translator",
-    image: "/images/team/Lwin-Me-Me-Zaw.jpg",
-    social: {
-      facebook: "#",
-      twitter: "#",
-      pinterest: "#",
-      instagram: "#",
-    },
-  },
-  {
-    id: 2,
-    name: "Ian Barker",
-    role: "Expert Agent",
-    image: "/images/team/team.png",
-    social: {
-      facebook: "#",
-      twitter: "#",
-      pinterest: "#",
-      instagram: "#",
-    },
-  },
-  {
-    id: 3,
-    name: "Nannie Robinson",
-    role: "Expert Agent",
-    image: "/images/team/team.png",
-    social: {
-      facebook: "#",
-      twitter: "#",
-      pinterest: "#",
-      instagram: "#",
-    },
-  },
-  {
-    id: 4,
-    name: "Team Member 4",
-    role: "Expert Agent",
-    image: "/images/team/team.png",
-    social: {
-      facebook: "#",
-      twitter: "#",
-      pinterest: "#",
-      instagram: "#",
-    },
-  },
-];
+import { teamMembersData } from "../../data";
 
 const TeamSection = () => {
   return (
@@ -137,7 +87,7 @@ const TeamSection = () => {
           }}
           className="relative"
         >
-          {teamMembers.map((member) => (
+          {teamMembersData.map((member) => (
             <SwiperSlide key={member.id}>
               <div className="team-one__card">
                 <div className="team-one__image">

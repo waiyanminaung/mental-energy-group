@@ -6,6 +6,7 @@ import { useState } from "react";
 import TeamSection from "./components/TeamSection";
 import HeroSlider from "./components/HeroSlider";
 import {
+  contactInfo,
   faqData,
   highlightData,
   logosData,
@@ -56,7 +57,7 @@ export default function HomePage() {
                 />
                 <div className="about-two__box">
                   <i className="pylon-icon-assets"></i>
-                  <h3>26 Years of Working Expericence</h3>
+                  <h3>10 Years of Working Expericence</h3>
                 </div>
               </div>
             </div>
@@ -102,7 +103,9 @@ export default function HomePage() {
                     <div className="main-header__info-phone-content">
                       <span>Call US</span>
                       <h3>
-                        <a href="tel:92-666-888-0000">090 639 4022</a>
+                        <a href={contactInfo.phone.link}>
+                          {contactInfo.phone.value}
+                        </a>
                       </h3>
                     </div>
                   </div>
@@ -113,12 +116,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        className="call-to-action"
-        style={{
-          backgroundImage: `url(/images/backgrounds/call-to-action-bg-1-1.jpg)`,
-        }}
-      >
+      <section className="call-to-action">
         <div className="container">
           <div className="left-content">
             <h3>Need Help?</h3>
@@ -149,12 +147,15 @@ export default function HomePage() {
                       <i className="flaticon-car-loan"></i>
                     </div>
                     <h3>
-                      <a href="#">{service.title}</a>
+                      <a href={`services/${service.link}`}>{service.title}</a>
                     </h3>
                   </div>
                   <div className="service-second__content">
-                    <p>{service.description}</p>
-                    <a href={service.link} className="service-two__card-link">
+                    {/* <p>{service.description}</p> */}
+                    <a
+                      href={`services/${service.link}`}
+                      className="service-two__card-link"
+                    >
                       <i className="pylon-icon pylon-icon-right-arrow"></i>Read
                       More
                     </a>

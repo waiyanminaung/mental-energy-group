@@ -3172,7 +3172,6 @@ p {
 .client-carousel img {
   -webkit-transition: 500ms;
   transition: 500ms;
-  opacity: 0.3;
   max-width: 100%;
 }
 
