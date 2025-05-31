@@ -3,8 +3,8 @@
 import { useModal } from "@/app/components/modal/useModal";
 import EditFormModal from "./EditFormModal";
 import { Edit05, Trash01 } from "@untitledui/icons";
-import { Announcement } from "../type";
 import { ConfirmDialog } from "@/app/admin/components/ConfirmDialog";
+import { Announcement } from "../../hospitals/announcements/type";
 
 const ActionButton = ({ data }: { data?: Announcement }) => {
   const { show } = useModal();
