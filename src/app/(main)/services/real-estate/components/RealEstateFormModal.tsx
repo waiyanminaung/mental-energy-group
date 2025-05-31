@@ -1,67 +1,43 @@
 "use client";
 
 import { RHFInput, RHFInputGroup } from "@/app/components/rhf";
-import { RHFDate } from "@/app/components/rhf/rhf-date";
-import { RHFFile } from "@/app/components/rhf/rhf-file";
 import { RHFTextarea } from "@/app/components/rhf/rhf-textarea";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
-import { fileToBase64 } from "@/utils/fileToBase64";
 import { useSentMail } from "@/app/(main)/hooks/useSentMail";
 import { BaseMailData } from "@/app/(main)/types";
 import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
+import { RHFSelect } from "@/app/components/rhf/rhf-select";
 
-interface FileValue {
-  preview: string | null;
-  fileType: string;
-  file: File;
-}
-
-const hotelFormSchema = yup.object({
+const realEstateFormSchema = yup.object({
   name: yup.string().required("Name is required"),
   email: emailValidation.required("Email is required"),
   nationality: yup.string().required("Nationality is required"),
   phone: yup.string().required("Phone is required"),
-  date: yup.date().required("Preferred date is required"),
-  number_of_people: yup.string().required("Number of People is required"),
-  passport: yup
-    .mixed<FileValue>()
-    .required("Passport Bio is required")
-    .test("fileSize", "File size is too large", (value) => {
-      if (!value) return true;
-      if (!value.file) return true;
-      return value.file.size <= 5 * 1024 * 1024;
-    }),
+  requestType: yup.string().required("Request Type is required"),
+  location: yup.string().required("Location is required"),
   message: yup.string(),
 });
 
-export type HotelFormDto = yup.InferType<typeof hotelFormSchema>;
+export type RealEstateFormDto = yup.InferType<typeof realEstateFormSchema>;
 
-const HotelFormModal = ({ closeModal }: ModalProps) => {
+const RealEstateFormModal = ({ closeModal }: ModalProps) => {
   const methods = useForm({
-    resolver: yupResolver(hotelFormSchema),
+    resolver: yupResolver(realEstateFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<HotelFormDto & BaseMailData>();
+  const { loading, sentMail } = useSentMail<RealEstateFormDto & BaseMailData>();
 
-  const onSubmit = async (data: HotelFormDto) => {
-    const attachmentBase64 = await fileToBase64(data.passport.file);
-
+  const onSubmit = async (data: RealEstateFormDto) => {
     const { error } = await sentMail({
       ...data,
-      subject: `New Enquiry for [Hotel] - ${data.name}`,
-      serviceType: ServiceTypeEnum.HOTEL,
-      attachments: [
-        {
-          content: attachmentBase64,
-          filename: data.passport.file.name,
-        },
-      ],
+      subject: `New Enquiry for [Real Estate]`,
+      serviceType: ServiceTypeEnum.REAL_ESTATE,
     });
 
     if (error) {
@@ -69,7 +45,7 @@ const HotelFormModal = ({ closeModal }: ModalProps) => {
       return;
     }
 
-    toast.success("Booking submitted successfully");
+    toast.success("Enquiry submitted successfully");
     handleClose();
   };
 
@@ -87,7 +63,9 @@ const HotelFormModal = ({ closeModal }: ModalProps) => {
         >
           <div className="modal-content-header">
             <div className="flex justify-between items-center">
-              <h3 className="text-2xl font-semibold">Hotel Booking</h3>
+              <h3 className="text-2xl font-semibold">
+                Submit Your Real Estate Inquiry
+              </h3>
               <button
                 type="button"
                 onClick={handleClose}
@@ -115,19 +93,29 @@ const HotelFormModal = ({ closeModal }: ModalProps) => {
               <RHFInput name="nationality" />
             </RHFInputGroup>
 
-            <RHFInputGroup label="Preferred Date">
-              <RHFDate name="date" />
+            <RHFInputGroup label="I'm Looking To:">
+              <RHFSelect
+                name="requestType"
+                options={[
+                  {
+                    label: "Buy",
+                    value: "Buy",
+                  },
+                  {
+                    label: "Rent",
+                    value: "Rent",
+                  },
+                  {
+                    label: "Sell",
+                    value: "Sell",
+                  },
+                ]}
+              />
             </RHFInputGroup>
 
-            <RHFInputGroup label="How many people?">
-              <RHFInput name="number_of_people" />
+            <RHFInputGroup label="Interested Location">
+              <RHFInput name="location" />
             </RHFInputGroup>
-
-            <div className="col-span-full">
-              <RHFInputGroup label="Passport Bio">
-                <RHFFile name="passport" accept="image/*,.pdf" />
-              </RHFInputGroup>
-            </div>
 
             <div className="col-span-full">
               <RHFInputGroup label="Message">
@@ -142,7 +130,7 @@ const HotelFormModal = ({ closeModal }: ModalProps) => {
               disabled={loading}
               className="w-full bg-[#dbb481] text-white py-2 px-4 rounded-lg hover:bg-[#c49c69] transition-colors duration-300 sticky bottom-0 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Submitting..." : "Submit Booking"}
+              {loading ? "Submitting..." : "Submit Enquiry"}
             </button>
           </div>
         </form>
@@ -151,4 +139,4 @@ const HotelFormModal = ({ closeModal }: ModalProps) => {
   );
 };
 
-export default HotelFormModal;
+export default RealEstateFormModal;

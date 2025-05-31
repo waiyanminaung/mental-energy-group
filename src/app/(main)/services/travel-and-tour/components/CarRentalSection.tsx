@@ -4,20 +4,30 @@ import Image from "next/image";
 import { useModal } from "@/app/components/modal/useModal";
 import { carRentalData } from "@/app/(main)/data";
 import CarRentalFormModal from "./CarRentalFormModal";
+import Button from "@/app/admin/components/Button";
+import TripPricingWithCarModal from "./TripPricingWithCarModal";
 
 const CarRentalSection = () => {
   const { show } = useModal();
 
   return (
     <div>
-      <div className="space-y-2 mb-8">
+      <div className="space-y-2 mb-8 text-center">
         <h2 className="text-3xl font-bold">Car Rental Service</h2>
-        <p className="font-semibold">
+        <p className="font-medium max-w-[600px] mx-auto">
           Let us arrange your transportation needs in Thailand. We&apos;ll help
           you secure the perfect vehicle rental, from comfortable sedans to
           spacious vans, complete with professional drivers to ensure a safe and
           convenient journey throughout your stay.
         </p>
+        <Button
+          variant="primary"
+          appearance="outline"
+          size="large"
+          onClick={() => show(<TripPricingWithCarModal />)}
+        >
+          View Fixed Trip Pricing for Popular Destinations
+        </Button>
       </div>
 
       {/* Car Options List */}
@@ -51,7 +61,7 @@ const CarRentalSection = () => {
                   onClick={() => show(<CarRentalFormModal data={car} />)}
                   className="w-full sm:w-auto bg-[#dbb481] text-white px-6 py-2 rounded-full hover:bg-[#c49c69] transition-colors duration-300 whitespace-nowrap self-end sm:self-start"
                 >
-                  Inquire Now
+                  Book Now
                 </button>
               </div>
             </div>

@@ -9,6 +9,15 @@ import { destinationsData } from "@/app/(main)/data";
 const DestinationsSection = () => {
   return (
     <div>
+      <p className="text-gray-600 !mb-7 text-center">
+        We proudly offer unforgettable experiences in: Bangkok City, Ayutthaya,
+        Nakhon Nayok, Pattaya Beach, Ko Lan, Bang Saen Beach, Rayong Beach,
+        Ratchaburi, Hua Hin Beach, Kanchanaburi, Ban i Tong, Mon Bridge, Khao
+        Yai, Phetchabun, Chiang Mai, Chiang Rai, Mae Hong Son, Phuket, Ko Phi
+        Phi, Krabi, Ko Samui, Phang Nga Bay, Ko Tao, Khao Lak, Pa Tong, Prachuap
+        Khiri Khan, and Ratchaburi.
+      </p>
+
       <Swiper
         modules={[Navigation, Autoplay]}
         loop={true}

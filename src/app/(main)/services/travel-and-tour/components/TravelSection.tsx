@@ -23,7 +23,7 @@ const TravelSection = () => {
           onClick={() => show(<TravelFormModal />)}
           className="bg-[#dbb481] text-white px-8 py-3 rounded-full hover:bg-[#c49c69] transition-colors duration-300 mt-4"
         >
-          Make a Request
+          Inquire Now
         </button>
       </div>
     </div>

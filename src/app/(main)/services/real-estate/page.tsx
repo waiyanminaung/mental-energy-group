@@ -2,8 +2,13 @@
 
 import EntryServiceBanner from "@/app/components/EntryServiceBanner";
 import ContactInfoSection from "@/app/components/layout/ContactInfoSection";
+import MakeRequestSection from "@/app/components/layout/MakeRequestSection";
+import { useModal } from "@/app/components/modal/useModal";
+import RealEstateFormModal from "./components/RealEstateFormModal";
 
 export default function RealEstatePage() {
+  const { show } = useModal();
+
   return (
     <div>
       <EntryServiceBanner
@@ -12,7 +17,13 @@ export default function RealEstatePage() {
         image="/images/real-estate.jpg"
       />
 
-      <ContactInfoSection onRequestClick={() => alert("Coming Soon")} />
+      <ContactInfoSection />
+
+      <MakeRequestSection
+        requestDescription="Looking for your next property or investment opportunity? Submit your inquiry today and let us help you find the perfect match."
+        onRequestClick={() => show(<RealEstateFormModal />)}
+        buttonLabel="Get Inquiry Now"
+      />
     </div>
   );
 }

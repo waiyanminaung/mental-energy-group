@@ -182,7 +182,7 @@ export const carRentalData = [
     selfDrive: 1800,
     withDriver: 2800,
     deposit: 5000,
-    image: "/images/car-rental/van.webp",
+    image: "/images/car-rental/ventury.png",
   },
   {
     id: "76a930b1-10f0-4c3f-bd94-5987e4b0c152",

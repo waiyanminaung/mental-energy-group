@@ -5,6 +5,7 @@ export enum ServiceTypeEnum {
   HOTEL = "hotel",
   TRAVEL = "travel",
   CAR_RENTAL = "car rental",
+  REAL_ESTATE = "real estate",
 }
 
 export enum CollectionEnum {

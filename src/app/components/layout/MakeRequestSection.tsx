@@ -1,7 +1,7 @@
 const MakeRequestSection = ({
   requestDescription,
   onRequestClick,
-  buttonLabel = "Make a Request",
+  buttonLabel = "Inquire Now",
 }: {
   requestDescription?: string;
   onRequestClick: () => void;
