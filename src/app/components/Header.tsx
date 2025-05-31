@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import { contactInfo } from "../(main)/data";
 
 const Header = () => {
   const router = useRouter();
@@ -134,10 +135,10 @@ const Header = () => {
                   <span className="text-sm text-[#b0c2d7]">Call US</span>
                   <h3>
                     <a
-                      href="tel:+660906394022"
+                      href={contactInfo.phone.link}
                       className="text-lg font-bold text-white"
                     >
-                      090 639 4022
+                      {contactInfo.phone.value}
                     </a>
                   </h3>
                 </div>

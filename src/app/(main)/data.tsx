@@ -5,6 +5,7 @@ export const servicesData = [
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "manpower",
+    icon: "/images/services/icons/manpower.svg",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const servicesData = [
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "medical-tourism",
+    icon: "/images/services/icons/medical.svg",
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const servicesData = [
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "travel-and-tour",
+    icon: "/images/services/icons/travel.svg",
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export const servicesData = [
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "real-estate",
+    icon: "/images/services/icons/realestate.svg",
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ export const servicesData = [
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "other",
+    icon: "/images/services/icons/other.svg",
   },
 ];
 

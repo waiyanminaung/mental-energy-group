@@ -4,7 +4,7 @@ const EntryHeader = ({ title }: { title: string }) => {
       <div
         className="page-header__bg"
         style={{
-          backgroundImage: `url(/images/backgrounds/page-header-bg-1-1.jpg)`,
+          backgroundImage: `url(/images/building.jpg)`,
         }}
       ></div>
       <div className="container">

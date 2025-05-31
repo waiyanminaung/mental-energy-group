@@ -50,7 +50,7 @@ export default function HomePage() {
             >
               <div className="about-two__image">
                 <Image
-                  src="/images/resources/about-2-2.png"
+                  src="/images/about.jpeg"
                   alt=""
                   width={500}
                   height={602}
@@ -144,7 +144,7 @@ export default function HomePage() {
                 >
                   <div className="service-second-info-icon">
                     <div className="service-icon2">
-                      <i className="flaticon-car-loan"></i>
+                      <Image src={service.icon} alt="" width={50} height={50} />
                     </div>
                     <h3>
                       <a href={`services/${service.link}`}>{service.title}</a>
@@ -159,11 +159,11 @@ export default function HomePage() {
                       <i className="pylon-icon pylon-icon-right-arrow"></i>Read
                       More
                     </a>
-                    <div className="service-second-right-icon-box">
+                    {/* <div className="service-second-right-icon-box">
                       <div className="service-second-right-icon">
                         <i className="flaticon-car-loan"></i>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );
