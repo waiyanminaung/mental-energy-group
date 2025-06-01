@@ -15,10 +15,10 @@ export default function TravelAndTourPage() {
         image={"/images/services/bangkok.jpg"}
       />
 
-      <div className="space-y-18">
+      <div className="lg:space-y-18 space-y-14">
         <DestinationsSection />
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-8 gap-y-8">
           <TicketSection />
           <HotelSection />
           <TravelSection />

@@ -47,8 +47,8 @@ export default function Button({
 
   const sizes = {
     small: "px-2 py-2 text-xs",
-    default: "px-3 h-10 text-sm",
-    large: "px-4 h-12 text-base",
+    default: "px-3 py-1 min-h-10 text-sm",
+    large: "px-4 py-1 min-h-12 text-base",
   };
 
   const width = fullWidth ? "w-full" : "";

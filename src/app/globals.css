@@ -49,11 +49,7 @@ button {
 }
 
 .modal-content-container {
-  background: white;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
+  @apply bg-white md:max-h-[90vh] max-h-[100vh] flex flex-col md:rounded-md;
 }
 
 .modal-content {

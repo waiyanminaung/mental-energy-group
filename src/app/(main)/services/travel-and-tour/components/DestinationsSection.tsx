@@ -29,7 +29,7 @@ const DestinationsSection = () => {
         spaceBetween={24}
         slidesPerView={1}
         breakpoints={{
-          640: {
+          0: {
             slidesPerView: 2,
           },
           768: {

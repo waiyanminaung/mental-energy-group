@@ -5683,18 +5683,6 @@ p {
   background-color: var(--thm-primary);
 }
 
-.service-sidebar__category {
-  padding: 0px 20px 50px 20px;
-  padding-bottom: 35px;
-}
-
-@media (max-width: 991px) {
-  .service-sidebar__category {
-    padding: 0;
-    padding-bottom: 35px;
-  }
-}
-
 .service-sidebar__category h3 {
   margin: 0;
   font-size: 20px;
@@ -5756,7 +5744,7 @@ p {
 
 @media (max-width: 425px) {
   .service-sidebar {
-    padding-bottom: 40px;
+    padding-bottom: 0px;
   }
 }
 

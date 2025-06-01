@@ -139,7 +139,7 @@ export default function HomePage() {
             {servicesData.map((service) => {
               return (
                 <div
-                  className="service-second lg:basis-[calc(33%-16px)]"
+                  className="service-second lg:basis-[calc(33%-16px)] basis-full"
                   key={service.id}
                 >
                   <div className="service-second-info-icon">
@@ -151,7 +151,6 @@ export default function HomePage() {
                     </h3>
                   </div>
                   <div className="service-second__content">
-                    {/* <p>{service.description}</p> */}
                     <a
                       href={`services/${service.link}`}
                       className="service-two__card-link"
@@ -159,11 +158,6 @@ export default function HomePage() {
                       <i className="pylon-icon pylon-icon-right-arrow"></i>Read
                       More
                     </a>
-                    {/* <div className="service-second-right-icon-box">
-                      <div className="service-second-right-icon">
-                        <i className="flaticon-car-loan"></i>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               );

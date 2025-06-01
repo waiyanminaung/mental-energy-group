@@ -15,7 +15,7 @@ export default function Page() {
       <EntryServiceBanner
         title="Professional Manpower Solutions"
         description="Connect with skilled professionals through our comprehensive manpower services. We provide reliable staffing solutions tailored to your business needs."
-        image="/images/manpower.jpeg"
+        image="/images/services/manpower.jpeg"
       />
       <JobsSection />
       <ContactInfoSection />

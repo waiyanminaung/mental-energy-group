@@ -21,7 +21,7 @@ const ModalWrapper = ({
 
       {/* Modal Dialog */}
       <div className="fixed inset-0 z-30 w-screen flex flex-col">
-        <div className={classNames("max-w-lg m-auto w-full", className)}>
+        <div className={classNames("md:max-w-lg m-auto w-full", className)}>
           {children}
         </div>
       </div>

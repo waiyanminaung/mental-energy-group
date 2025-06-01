@@ -14,7 +14,7 @@ export default function RealEstatePage() {
       <EntryServiceBanner
         title="Real Estate Solutions"
         description="Find your perfect property in Thailand - Houses and Condos for rent/sale, Land for buy/sale. We help you discover the ideal property that matches your needs."
-        image="/images/real-estate.jpg"
+        image="/images/services/real-estate.jpg"
       />
 
       <ContactInfoSection />

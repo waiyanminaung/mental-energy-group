@@ -9,15 +9,15 @@ export default async function ServicesLayout({
       <EntryHeader title="Service Detail" />
       <section className="service-details">
         <div className="container">
-          <div className="grid grid-cols-12 flex-wrap gap-7">
-            <div className="col-span-4">
+          <div className="grid grid-cols-12 flex-wrap lg:gap-7 gap-y-7">
+            <div className="lg:col-span-4 col-span-12">
               <div className="service-sidebar h-full">
-                <div className="service-sidebar__category">
+                <div className="service-sidebar__category lg:pe-5">
                   <Sidebar />
                 </div>
               </div>
             </div>
-            <div className="col-span-8">
+            <div className="lg:col-span-8 col-span-full">
               <div className="service-details__content">{children}</div>
             </div>
           </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ContactInfoListSection() {
   return (
-    <div className="bg-white shadow-lg border-gray-200 py-8 px-6 rounded-lg flex flex-col justify-center items-center">
+    <div className="bg-white shadow-lg border-gray-200 py-8 px-6 rounded-lg flex flex-col justify-center items-center max-w-full overflow-hidden">
       <div className="w-full">
         {contactInfoData.map((item, index) => (
           <a
