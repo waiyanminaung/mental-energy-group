@@ -15,7 +15,7 @@ interface ContentDetailModalProps extends ModalProps {
 
 const ContentDetailModal = ({ data, closeModal }: ContentDetailModalProps) => {
   return (
-    <ModalWrapper className="max-w-[700px]">
+    <ModalWrapper className="md:max-w-[700px]">
       <div className="bg-white p-8 rounded-lg">
         <div className="flex items-start justify-between  mb-5">
           <div className="inline-flex items-center text-sm text-gray-900">
