@@ -180,20 +180,9 @@ export default function HomePage() {
             <div>
               <div className="faq-one__content">
                 <div className="block-title text-left">
-                  <p>What We’re Offering</p>
+                  <p>Frequently Asked Questions </p>
                   <h2>Most of the People Trust on Us For Fast Services</h2>
                 </div>
-                <p>
-                  Scelerisque eleifend donec pretium vulputate sapien. Nibh
-                  tellus molestie nunc non. Tristique risus nec feugiat in
-                  fermentum posuere urna. Duis aute irure dolor lipsum is
-                  simply. quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidata sunt in culpa qui
-                  offia deserunt mollit anim id est laborum.Phasellus faucibus
-                  scelerisque eleifend donec. Tincidunt arcu non sodales neque
-                  sodales ut.
-                </p>
               </div>
             </div>
             <div>
