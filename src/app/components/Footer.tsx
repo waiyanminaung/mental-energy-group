@@ -97,12 +97,10 @@ const Footer = () => {
           <p>© Copyright 2025 by Mental Energy Group</p>
           <div className="bottom-footer__social">
             <a
-              href="https://www.facebook.com/smallbusinesslike"
+              href={contactInfo.facebook.link}
               className="fab fa-facebook-f"
             ></a>
-            <a href="#" className="fab fa-twitter"></a>
-            <a href="#" className="fab fa-pinterest-p"></a>
-            <a href="#" className="fab fa-instagram"></a>
+            <a href={contactInfo.line.link} className="fab fa-line"></a>
           </div>
         </div>
       </div>
