@@ -20,7 +20,7 @@ const TicketSection = () => {
           appearance="outline"
           onClick={() => {
             window.open(
-              "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/documents%2Ftickets.pdf?alt=media&token=1f47afdb-3f09-4c65-b7d9-b554c9581823",
+              "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/documents%2FTicket.pdf?alt=media&token=6551b351-8c3e-4b61-a726-5eec6926c0ab",
               "_blank"
             );
           }}
