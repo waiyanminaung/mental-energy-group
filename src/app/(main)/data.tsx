@@ -86,7 +86,7 @@ export const highlightData = [
 export const logosData = [
   "/images/partners/King-Chulalongkorn-Memorial-Hospital.png",
   "/images/partners/Siriraj-Piyamaharajkarun.jpg",
-  "/images/partners/vimut.png",
+  "/images/partners/Vimut.png",
   "/images/partners/Med-Park.png",
   "/images/partners/Bumrungrad-International-Hospital.png",
   "/images/partners/Bangkok-Hospital.jpeg",
