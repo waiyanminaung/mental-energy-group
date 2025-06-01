@@ -41,7 +41,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="about-two">
+      <section className="about-two" id="about-us-section">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-6">
             <div

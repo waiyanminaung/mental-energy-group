@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { contactInfo } from "../(main)/data";
+import Link from "next/link";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -44,18 +45,18 @@ const Footer = () => {
                 <h3 className="footer-widget__title">Explore</h3>
                 <ul className="list-unstyled footer-widget__link-list">
                   <li>
-                    <a href="#">
+                    <Link href="/#about-us-section">
                       <i className="fa fa-arrow-right"></i>About
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link href="/services">
                       <i className="fa fa-arrow-right"></i>Our Services
-                    </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <a href="#">
+                    <a href="/contact-us">
                       <i className="fa fa-arrow-right"></i>Contact
                     </a>
                   </li>

@@ -9,6 +9,7 @@ import { TravelTemplate } from "@/app/components/email/TravelTemplate";
 import { CarRentalTemplate } from "@/app/components/email/CarRentalTemplate";
 import { RealEstateTemplate } from "@/app/components/email/RealEstateTemplate";
 import { OtherServicesTemplate } from "@/app/components/email/OtherServicesTemplate";
+import { ContactTemplate } from "@/app/components/email/ContactTemplate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -34,6 +35,8 @@ export async function POST(request: Request) {
           return RealEstateTemplate;
         case ServiceTypeEnum.OTHER:
           return OtherServicesTemplate;
+        case "contact":
+          return ContactTemplate;
         default:
           return MedicalTourismEmailTemplate;
       }
