@@ -38,7 +38,7 @@ const ContactFrom = () => {
       return;
     }
 
-    toast.success("Booking submitted successfully");
+    toast.success("Submitted successfully");
     methods.reset({
       name: "",
       email: "",

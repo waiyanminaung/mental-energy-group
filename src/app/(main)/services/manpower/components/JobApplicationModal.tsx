@@ -55,7 +55,7 @@ const JobApplicationModal = ({ closeModal }: ModalProps) => {
       return;
     }
 
-    toast.success("Booking submitted successfully");
+    toast.success("Submitted successfully");
     handleClose();
   };
 

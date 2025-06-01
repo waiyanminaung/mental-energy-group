@@ -119,7 +119,7 @@ const CarRentalFormModal = ({ data, closeModal }: CarRentalFormModalProps) => {
       return;
     }
 
-    toast.success("Booking submitted successfully");
+    toast.success("Submitted successfully");
     handleClose();
   };
 
