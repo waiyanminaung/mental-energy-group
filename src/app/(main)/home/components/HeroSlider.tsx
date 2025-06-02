@@ -4,11 +4,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Link from "next/link";
 
 const HeroSlider = ({
   data,
 }: {
-  data: { id: number; title: string; subtitle: string; image: string }[];
+  data: {
+    id: number;
+    title: string;
+    subtitle: string;
+    image: string;
+    link: string;
+  }[];
 }) => {
   return (
     <section className="main-slider main-slider__two">
@@ -41,9 +48,9 @@ const HeroSlider = ({
                   <p>{slide.subtitle}</p>
                   <h2>{slide.title}</h2>
                   <div className="button-wrap">
-                    <a href="#" className="thm-btn">
-                      Contact Now
-                    </a>
+                    <Link href={slide.link} className="thm-btn">
+                      Learn More
+                    </Link>
                   </div>
                 </div>
               </div>
