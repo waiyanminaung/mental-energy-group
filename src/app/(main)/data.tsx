@@ -278,33 +278,9 @@ export const teamMembersData = [
   },
   {
     id: 2,
-    name: "Ian Barker",
-    role: "Expert Agent",
+    name: "Ko Si Thu Tun",
+    role: "Operation Manager",
     image: "/images/team/team2.jpg",
-    social: {
-      facebook: "#",
-      twitter: "#",
-      pinterest: "#",
-      instagram: "#",
-    },
-  },
-  {
-    id: 3,
-    name: "Nannie Robinson",
-    role: "Expert Agent",
-    image: "/images/team/team.png",
-    social: {
-      facebook: "#",
-      twitter: "#",
-      pinterest: "#",
-      instagram: "#",
-    },
-  },
-  {
-    id: 4,
-    name: "Team Member 4",
-    role: "Expert Agent",
-    image: "/images/team/team.png",
     social: {
       facebook: "#",
       twitter: "#",
