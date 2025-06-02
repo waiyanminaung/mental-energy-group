@@ -8,12 +8,7 @@ import { teamMembersData } from "../../data";
 const TeamSection = () => {
   return (
     <section className="relative py-24 overflow-hidden">
-      <div
-        className="team-home__bg"
-        style={{
-          backgroundImage: "url(/images/backgrounds/team-bg-1-1.jpg)",
-        }}
-      />
+      <div className="team-home__bg" />
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -21,14 +16,16 @@ const TeamSection = () => {
             <div className="team-home__content z-10 relative">
               <div className="block-title text-left">
                 <p>Professional & Experts</p>
-                <h2>Meet Our Experience Staff For Loan</h2>
+                <h2>Meet Our Experience Staff</h2>
               </div>
               <p>
-                Our team provide your best variations for passages lorem Ipsum
-                available, but the majority have suffered alteration in some
-                form tristique senectus for etnetuset malesuada fames aliquam
-                eleifend volutpat est velit egestas dui id ornare arcu. Purus
-                gravida quis blandit turpis cursus.
+                Our team is made up of skilled professionals with years of
+                experience across multiple industries. We are committed to
+                delivering high-quality services tailored to your needs. Whether
+                you’re seeking reliable manpower, planning a medical trip,
+                organizing a travel tour, investing in real estate, or looking
+                for support services like translation and visa assistance—we’re
+                here to help.
               </p>
 
               <div className="team-home__nav">
