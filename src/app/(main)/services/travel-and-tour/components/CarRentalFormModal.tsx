@@ -9,15 +9,15 @@ import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
 import { fileToBase64 } from "@/utils/fileToBase64";
-import { useSentMail } from "@/app/(main)/hooks/useSentMail";
-import { BaseMailData } from "@/app/(main)/types";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
 import { CarRentalType } from "@/app/(main)/data";
 import classNames from "@/utils/classNames";
 import { useEffect } from "react";
+import { sendMail } from "@/lib/sendmail";
+import { renderEmail } from "@/lib/renderEmail";
+import { CarRentalTemplate } from "@/app/components/email/CarRentalTemplate";
 
 interface FileValue {
   preview: string | null;
@@ -74,13 +74,11 @@ const CarRentalFormModal = ({ data, closeModal }: CarRentalFormModalProps) => {
     resolver: yupResolver(carRentalSchema),
   });
 
-  const { loading, sentMail } = useSentMail<CarRentalFormDto & BaseMailData>();
+  const loading = methods.formState.isSubmitting;
 
   useEffect(() => {
     methods.setValue("model", data.model);
   }, [data, methods]);
-
-  console.log(methods.watch("model"));
 
   const onSubmit = async (formData: CarRentalFormDto) => {
     const passportBase64 = formData.passport?.file
@@ -97,6 +95,7 @@ const CarRentalFormModal = ({ data, closeModal }: CarRentalFormModalProps) => {
       attachments.push({
         content: passportBase64,
         filename: formData?.passport?.file.name || "",
+        encoding: "base64",
       });
     }
 
@@ -104,13 +103,17 @@ const CarRentalFormModal = ({ data, closeModal }: CarRentalFormModalProps) => {
       attachments.push({
         content: licenseBase64,
         filename: formData?.driving_license?.file.name || "",
+        encoding: "base64",
       });
     }
 
-    const { error } = await sentMail({
-      ...formData,
-      subject: `New Enquiry for [Car Rental] - ${formData.model}`,
-      serviceType: ServiceTypeEnum.CAR_RENTAL,
+    const subject = `New Enquiry for [Car Rental] - ${formData.model}`;
+
+    const { error } = await sendMail({
+      email: formData.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(<CarRentalTemplate subject={subject} {...formData} />),
       attachments: attachments,
     });
 

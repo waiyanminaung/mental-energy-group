@@ -6,13 +6,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
-import { useSentMail } from "@/app/(main)/hooks/useSentMail";
-import { BaseMailData } from "@/app/(main)/types";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
 import { RHFSelect } from "@/app/components/rhf/rhf-select";
+import { renderEmail } from "@/lib/renderEmail";
+import { sendMail } from "@/lib/sendmail";
+import { RealEstateTemplate } from "@/app/components/email/RealEstateTemplate";
 
 const realEstateFormSchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -31,13 +31,16 @@ const RealEstateFormModal = ({ closeModal }: ModalProps) => {
     resolver: yupResolver(realEstateFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<RealEstateFormDto & BaseMailData>();
+  const loading = methods.formState.isSubmitting;
 
   const onSubmit = async (data: RealEstateFormDto) => {
-    const { error } = await sentMail({
-      ...data,
-      subject: `New Enquiry for [Real Estate]`,
-      serviceType: ServiceTypeEnum.REAL_ESTATE,
+    const subject = `New Enquiry for [Real Estate] - ${data.name}`;
+
+    const { error } = await sendMail({
+      email: data.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(<RealEstateTemplate subject={subject} {...data} />),
     });
 
     if (error) {

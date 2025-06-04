@@ -5,13 +5,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
-import { useSentMail } from "@/app/(main)/hooks/useSentMail";
-import { BaseMailData } from "@/app/(main)/types";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
 import { RHFSelect } from "@/app/components/rhf/rhf-select";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
+import { sendMail } from "@/lib/sendmail";
+import { JobEmailTemplate } from "@/app/components/email/JobTemplate";
+import { renderEmail } from "@/lib/renderEmail";
 
 const jobApplySchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -41,13 +41,16 @@ const JobApplicationModal = ({ closeModal }: ModalProps) => {
     resolver: yupResolver(jobApplySchema),
   });
 
-  const { loading, sentMail } = useSentMail<JobApplyDto & BaseMailData>();
+  const loading = methods.formState.isSubmitting;
 
   const onSubmit = async (data: JobApplyDto) => {
-    const { error } = await sentMail({
-      ...data,
-      subject: "Job Application",
-      serviceType: ServiceTypeEnum.JOB,
+    const subject = "Job Application";
+
+    const { error } = await sendMail({
+      email: data.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(<JobEmailTemplate subject={subject} {...data} />),
     });
 
     if (error) {

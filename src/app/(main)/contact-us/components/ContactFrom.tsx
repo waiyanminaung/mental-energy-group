@@ -6,8 +6,10 @@ import { emailValidation } from "@/app/helpers/emailValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
-import { useSentMail } from "../../hooks/useSentMail";
 import toast from "react-hot-toast";
+import { sendMail } from "@/lib/sendmail";
+import { renderEmail } from "@/lib/renderEmail";
+import { ContactTemplate } from "@/app/components/email/ContactTemplate";
 
 const contactFormSchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -24,13 +26,16 @@ const ContactFrom = () => {
     resolver: yupResolver(contactFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail();
+  const loading = methods.formState.isSubmitting;
 
   const onSubmit = async (data: ContactFormDto) => {
-    const { error } = await sentMail({
-      ...data,
-      subject: `${data.subject} - Contact Form`,
-      serviceType: "contact",
+    const subject = `${data.subject} - Contact Form`;
+
+    const { error } = await sendMail({
+      email: data.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(<ContactTemplate {...data} />),
     });
 
     if (error) {

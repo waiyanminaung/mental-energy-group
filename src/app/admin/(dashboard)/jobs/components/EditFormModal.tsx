@@ -82,12 +82,10 @@ const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
       };
 
       if (isEditMode) {
-        if (!data.id) return console.log("No id found");
+        if (!data.id) return console.error("No id found");
         const docRef = doc(db, CollectionEnum.JOB, data.id);
-        console.log("update", payload);
         await updateDoc(docRef, payload);
       } else {
-        console.log("new", payload);
         await addDoc(collection(db, CollectionEnum.JOB), payload);
       }
 
@@ -132,7 +130,6 @@ const EditFormModal = ({ data, closeModal, onSuccess }: EditFormModalProps) => {
               name="featured_image"
               accept="image/*"
               render={({ openFilePicker, field }) => {
-                console.log(field.value);
                 return (
                   <div>
                     {field.value?.preview ? (

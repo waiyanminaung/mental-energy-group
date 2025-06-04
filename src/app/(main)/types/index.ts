@@ -13,9 +13,4 @@ export type ServiceType =
 
 export interface BaseMailData {
   subject: string;
-  serviceType: ServiceType;
-  attachments?: {
-    content: string;
-    filename: string;
-  }[];
 }

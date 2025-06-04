@@ -7,7 +7,6 @@ const MakeRequestSection = ({
   onRequestClick: () => void;
   buttonLabel?: string;
 }) => {
-  console.log(requestDescription);
   return (
     <div className="text-center mt-12 max-w-[400px] mx-auto">
       <p className="text-gray-600 mb-6">{requestDescription}</p>

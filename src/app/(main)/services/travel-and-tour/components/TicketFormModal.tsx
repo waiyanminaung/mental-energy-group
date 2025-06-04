@@ -9,12 +9,12 @@ import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
 import { fileToBase64 } from "@/utils/fileToBase64";
-import { useSentMail } from "@/app/(main)/hooks/useSentMail";
-import { BaseMailData } from "@/app/(main)/types";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
+import { sendMail } from "@/lib/sendmail";
+import { renderEmail } from "@/lib/renderEmail";
+import { TicketTemplate } from "@/app/components/email/TicketTemplate";
 
 interface FileValue {
   preview: string | null;
@@ -47,19 +47,22 @@ const TicketFormModal = ({ closeModal }: ModalProps) => {
     resolver: yupResolver(ticketFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<TicketFormDto & BaseMailData>();
+  const loading = methods.formState.isSubmitting;
 
   const onSubmit = async (data: TicketFormDto) => {
     const attachmentBase64 = await fileToBase64(data.passport.file);
+    const subject = `New Enquiry for [Ticket] - ${data.name}`;
 
-    const { error } = await sentMail({
-      ...data,
-      subject: `New Enquiry for [Ticket] - ${data.name}`,
-      serviceType: ServiceTypeEnum.TICKET,
+    const { error } = await sendMail({
+      email: data.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(<TicketTemplate subject={subject} {...data} />),
       attachments: [
         {
           content: attachmentBase64,
           filename: data.passport.file.name,
+          encoding: "base64",
         },
       ],
     });

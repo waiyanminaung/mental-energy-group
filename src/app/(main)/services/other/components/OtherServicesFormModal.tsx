@@ -6,12 +6,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
-import { useSentMail } from "@/app/(main)/hooks/useSentMail";
-import { BaseMailData } from "@/app/(main)/types";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
+import { sendMail } from "@/lib/sendmail";
+import { renderEmail } from "@/lib/renderEmail";
+import { OtherServicesTemplate } from "@/app/components/email/OtherServicesTemplate";
 
 const otherServicesFormSchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -30,15 +30,16 @@ const OtherServicesFormModal = ({ closeModal }: ModalProps) => {
     resolver: yupResolver(otherServicesFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<
-    OtherServicesFormDto & BaseMailData
-  >();
+  const loading = methods.formState.isSubmitting;
 
   const onSubmit = async (data: OtherServicesFormDto) => {
-    const { error } = await sentMail({
-      ...data,
-      subject: `New Enquiry for [Other Services]`,
-      serviceType: ServiceTypeEnum.OTHER,
+    const subject = `New Enquiry for [Other Services] - ${data.name}`;
+
+    const { error } = await sendMail({
+      email: data.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(<OtherServicesTemplate subject={subject} {...data} />),
     });
 
     if (error) {

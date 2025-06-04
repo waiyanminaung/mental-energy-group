@@ -9,14 +9,14 @@ import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
 import { fileToBase64 } from "@/utils/fileToBase64";
-import { useSentMail } from "@/app/(main)/hooks/useSentMail";
-import { BaseMailData } from "@/app/(main)/types";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
 import { useEffect } from "react";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { Hospital } from "../type";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
+import { sendMail } from "@/lib/sendmail";
+import { renderEmail } from "@/lib/renderEmail";
+import { MedicalTourismEmailTemplate } from "@/app/components/email/MedicalTourismTemplate";
 
 interface FileValue {
   preview: string | null;
@@ -54,23 +54,26 @@ const MedicalTourismFormModal = ({
     resolver: yupResolver(bookingSchema),
   });
 
-  const { loading, sentMail } = useSentMail<BookingDto & BaseMailData>();
-
   useEffect(() => {
     methods.setValue("title", data.name);
   }, [methods, data]);
 
   const onSubmit = async (data: BookingDto) => {
     const attachmentBase64 = await fileToBase64(data.passport.file);
+    const subject = `New Enquiry for [Medical Tourism] - ${data.title}`;
 
-    const { error } = await sentMail({
-      ...data,
-      subject: `New Enquiry for [Medical Tourism] - ${data.title}`,
-      serviceType: ServiceTypeEnum.MEDICAL_TOURISM,
+    const { error } = await sendMail({
+      email: data.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(
+        <MedicalTourismEmailTemplate subject={subject} {...data} />
+      ),
       attachments: [
         {
           content: attachmentBase64,
           filename: data.passport.file.name,
+          encoding: "base64",
         },
       ],
     });
@@ -79,7 +82,6 @@ const MedicalTourismFormModal = ({
       toast.error(error);
       return;
     }
-
     toast.success("Submitted successfully");
     handleClose();
   };
@@ -150,10 +152,12 @@ const MedicalTourismFormModal = ({
           <div className="p-6 pt-0">
             <button
               type="submit"
-              disabled={loading}
+              disabled={methods.formState.isSubmitting}
               className="w-full bg-[#dbb481] text-white py-2 px-4 rounded-lg hover:bg-[#c49c69] transition-colors duration-300 sticky bottom-0 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Submitting..." : "Submit Booking"}
+              {methods.formState.isSubmitting
+                ? "Submitting..."
+                : "Submit Booking"}
             </button>
           </div>
         </form>

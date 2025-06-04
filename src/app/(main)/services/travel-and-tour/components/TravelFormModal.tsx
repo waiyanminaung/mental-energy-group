@@ -9,12 +9,12 @@ import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import toast from "react-hot-toast";
 import { fileToBase64 } from "@/utils/fileToBase64";
-import { useSentMail } from "@/app/(main)/hooks/useSentMail";
-import { BaseMailData } from "@/app/(main)/types";
-import { ServiceTypeEnum } from "@/app/(main)/constant";
 import FormModalWrapper from "@/app/components/modal/ModalWrapper";
 import { ModalProps } from "@/app/components/modal/useModal";
 import { emailValidation } from "@/app/helpers/emailValidation";
+import { TravelTemplate } from "@/app/components/email/TravelTemplate";
+import { renderEmail } from "@/lib/renderEmail";
+import { sendMail } from "@/lib/sendmail";
 
 interface FileValue {
   preview: string | null;
@@ -48,19 +48,22 @@ const TravelFormModal = ({ closeModal }: ModalProps) => {
     resolver: yupResolver(travelFormSchema),
   });
 
-  const { loading, sentMail } = useSentMail<TravelFormDto & BaseMailData>();
+  const loading = methods.formState.isSubmitting;
 
   const onSubmit = async (data: TravelFormDto) => {
     const attachmentBase64 = await fileToBase64(data.passport.file);
+    const subject = `New Enquiry for [Travel Plan] - ${data.name}`;
 
-    const { error } = await sentMail({
-      ...data,
-      subject: `New Enquiry for [Travel Plan] - ${data.name}`,
-      serviceType: ServiceTypeEnum.TRAVEL,
+    const { error } = await sendMail({
+      email: data.email,
+      subject: subject,
+      text: "",
+      html: renderEmail(<TravelTemplate subject={subject} {...data} />),
       attachments: [
         {
           content: attachmentBase64,
           filename: data.passport.file.name,
+          encoding: "base64",
         },
       ],
     });
