@@ -32,10 +32,11 @@ export async function sendMail({
       to: 'mentalenergygroup@gmail.com',
       subject: subject,
       text: text,
-      cc: ["mgroupnet@gmail.com"],
+      cc: ["mgroupnet@gmail.com", "mailbox.waiyanminaung@gmail.com"],
       html: html ? html : "",
       attachments: attachments || [],
     });
+    console.info("Email sent:", info.response);
     return { data: info };
   } catch (error: unknown) {
     console.error("Email sending error:", error);
