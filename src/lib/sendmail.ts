@@ -15,14 +15,12 @@ const transporter = nodemailer.createTransport({
 
 export async function sendMail({
   email,
-  sendTo,
   subject,
   text,
   html,
   attachments,
 }: {
   email: string;
-  sendTo?: string;
   subject: string;
   text: string;
   html?: string;
@@ -31,10 +29,10 @@ export async function sendMail({
   try {
     const info = await transporter.sendMail({
       from: email,
-      to: sendTo || "mailbox.waiyanminaung@gmail.com",
+      to: 'mentalenergygroup@gmail.com',
       subject: subject,
       text: text,
-      cc: ["private.dev.user@gmail.com"],
+      cc: ["mgroupnet@gmail.com"],
       html: html ? html : "",
       attachments: attachments || [],
     });
