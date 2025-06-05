@@ -69,7 +69,12 @@ export default function LoginPage() {
                 <RHFInput name="password" />
               </RHFInputGroup>
 
-              <Button isLoading={methods.formState.isSubmitting} fullWidth>
+              <Button
+                type="submit"
+                variant="primary"
+                isLoading={methods.formState.isSubmitting}
+                fullWidth
+              >
                 Sign In
               </Button>
             </form>
