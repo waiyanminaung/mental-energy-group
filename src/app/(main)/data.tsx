@@ -1,19 +1,19 @@
 export const servicesData = [
   {
-    id: 1,
-    title: "Man Power",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
-    link: "manpower",
-    icon: "/images/services/icons/manpower.svg",
-  },
-  {
     id: 2,
     title: "Medical Tourism",
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "medical-tourism",
     icon: "/images/services/icons/medical.svg",
+  },
+  {
+    id: 1,
+    title: "Man Power",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
+    link: "manpower",
+    icon: "/images/services/icons/manpower.svg",
   },
   {
     id: 3,
@@ -90,8 +90,6 @@ export const highlightData = [
 ];
 
 export const logosData = [
-  "/images/partners/King-Chulalongkorn-Memorial-Hospital.png",
-  "/images/partners/Siriraj-Piyamaharajkarun.jpg",
   "/images/partners/Vimut.png",
   "/images/partners/Med-Park.png",
   "/images/partners/Bumrungrad-International-Hospital.png",
