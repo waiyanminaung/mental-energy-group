@@ -71,18 +71,21 @@ export const highlightData = [
     title: "All-in-One Service Provider",
     description:
       "From medical travel and visa support to real estate and work permits — we handle it all, so you don’t have to deal with multiple agencies.",
+    icon: "/icons/one.svg",
   },
   {
     id: 20,
     title: "Reliable Document Assistance",
     description:
       "We specialize in embassy documents, visas, passports, and permits — ensuring accuracy, speed, and stress-free processing.",
+    icon: "/icons/two.svg",
   },
   {
     id: 30,
     title: "Local Expertise You Can Trust",
     description:
       "With deep knowledge of local and regional procedures, our team and network of agents provide dependable support every step of the way.",
+    icon: "/icons/three.svg",
   },
 ];
 

@@ -28,10 +28,8 @@ export default function HomePage() {
               return (
                 <div key={item.id}>
                   <div className="service-two__card">
-                    <i className="pylon-icon-consumer-behavior"></i>
-                    <h3>
-                      <a href="service-details.html">{item.title}</a>
-                    </h3>
+                    <Image src={item.icon} alt="" width={60} height={60} />
+                    <h3>{item.title}</h3>
                     <p>{item.description}</p>
                   </div>
                 </div>
@@ -122,7 +120,7 @@ export default function HomePage() {
             <h3>Need Help?</h3>
           </div>
           <div className="right-content">
-            <a href="apply-now.html" className="thm-btn">
+            <a href="/contact-us" className="thm-btn">
               Contact Us
             </a>
           </div>
