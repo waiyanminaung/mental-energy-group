@@ -133,8 +133,8 @@ export const contactInfo = {
     link: "tel:+66 123 456 789",
   },
   email: {
-    value: "smallbusinesslike@gmail.com",
-    link: `mailto:smallbusinesslike@gmail.com`,
+    value: "mentalenergygroup@gmail.com",
+    link: `mailto:mentalenergygroup@gmail.com`,
   },
   address: {
     value:
