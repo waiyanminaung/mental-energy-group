@@ -25,7 +25,7 @@ export const ConfirmDialog = Dialog();
 function Content(props: ConfirmDialogProps) {
   return (
     <ModalWrapper className="max-w-[30rem]">
-      <div className="p-6 w-full">
+      <div className="p-6 w-full bg-white rounded-lg">
         <h3 className="text-base font-semibold">{props.title}</h3>
         <div className="text-sm text-neutral-600 py-4 mb-4">
           {props.message}
