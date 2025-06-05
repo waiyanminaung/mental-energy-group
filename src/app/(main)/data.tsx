@@ -9,7 +9,7 @@ export const servicesData = [
   },
   {
     id: 1,
-    title: "Man Power",
+    title: "Manpower Services",
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "manpower",
