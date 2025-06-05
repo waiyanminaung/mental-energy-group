@@ -143,8 +143,8 @@ export const contactInfo = {
     link: "https://www.facebook.com/smallbusinesslike",
   },
   line: {
-    value: "@mgroup",
-    link: `https://line.me/R/ti/p/@mgroup`,
+    value: "@springsoul99",
+    link: `https://line.me/R/ti/p/@springsoul99`,
   },
 };
 
