@@ -1007,7 +1007,7 @@
 -------------------------------------   -------------------------*/
 :root {
   --thm-font: "Inter", sans-serif;
-  --heading-font: "Rajdhani", serif;
+  --heading-font: "Rajdhani", sans-serif;
   --thm-color: #555c63;
   --thm-color-rgb: 85, 92, 99;
   --thm-base: #dbb481;
