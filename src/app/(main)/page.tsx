@@ -1,64 +1,225 @@
+"use client";
+
 import Image from "next/image";
+import LogoSection from "./components/LogoSection";
+import { useState } from "react";
+import TeamSection from "./components/TeamSection";
+import HeroSlider from "./components/HeroSlider";
+import {
+  contactInfo,
+  faqData,
+  highlightData,
+  logosData,
+  servicesData,
+  sliderData,
+} from "./data";
 
-export default function Root() {
+export default function HomePage() {
+  const [activeId, setActiveId] = useState("faq1");
+
   return (
-    <section
-      id="home"
-      className="h-[100vh] md:h-screen flex items-center justify-center relative overflow-hidden bg-fixed bg-no-repeat bg-center bg-cover bg-[url(../../public/images/coming-soon-background.jpg)]"
-    >
-      <div className="absolute bg-black/80 inset-0"></div>
+    <>
+      <HeroSlider data={sliderData} />
 
-      <div className="container">
-        <div className="flex items-center justify-center relative text-center py-12 px-12 h-full w-full">
-          <div className="">
-            <a href="\" className="flex items-center justify-center mb-10">
-              <Image
-                src="/images/logo.png"
-                width={100}
-                height={100}
-                alt="Mental Energy Group"
-              />
-            </a>
-            <span className="text-white font-medium bg-white/20 py-[5px] px-4 rounded-md capitalize">
-              Our Website Is
-            </span>
-            <h1 className="lg:text-6xl text-4xl font-extrabold !text-white capitalize my-8">
-              coming soon
-            </h1>
-            <div className="flex justify-center">
-              <div className="max-w-xl text-center">
-                <p className="font-semibold text-white">
-                  We&apos;re coming soon! W&apos;re working hard to give you the
-                  best experience!
-                </p>
-              </div>
-            </div>
+      <section className="service-two">
+        <div className="container">
+          <div className="grid lg:grid-cols-3 gap-6">
+            {highlightData.map((item) => {
+              return (
+                <div key={item.id}>
+                  <div className="service-two__card">
+                    <Image src={item.icon} alt="" width={60} height={60} />
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div
-        id="hs-vertically-centered-modal"
-        className="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto"
-      >
-        <div className="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-screen-md sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
-          <div className="flex flex-col bg-white shadow-sm rounded-lg w-full relative">
-            <div className="flex justify-between items-center ">
-              <div className="overflow-y-auto w-full p-6">
-                <div className="">
-                  <h4 className="text-2xl/tight text-gray-800 font-bold mb-2">
-                    Contact us
-                  </h4>
-                  <p className="text-base font-medium text-gray-500 capitalize mb-6">
-                    Our design projects are fresh and simple and will benefit
-                    your business greatly. Learn more about our work!
-                  </p>
+      <section className="about-two" id="about-us-section">
+        <div className="container">
+          <div className="grid lg:grid-cols-12 gap-6">
+            <div
+              className="lg:col-span-5 wow fadeInLeft"
+              data-wow-duration="1500ms"
+            >
+              <div className="about-two__image">
+                <Image
+                  src="/images/about.jpg"
+                  alt=""
+                  width={500}
+                  height={602}
+                />
+                <div className="about-two__box">
+                  <i className="pylon-icon-assets"></i>
+                  <h3>10 Years of Working Expericence</h3>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="about-two__content">
+                <div className="block-title text-left">
+                  <p>Company Introductions</p>
+                  <h2>About Us</h2>
+                </div>
+                <p>
+                  We specialize in providing end-to-end support for individuals
+                  and families seeking medical travel, embassy documentation,
+                  visa and passport assistance, and local real estate services.
+                  Whether you&apos;re planning a treatment journey, securing
+                  official documents, or finding a new home, we’re here to make
+                  the process smooth, safe, and stress-free.
+                </p>
+                <ul className="list-unstyled about-two__list">
+                  <li>
+                    <i className="fa fa-check-circle"></i>
+                    Medical Tourism Assistance
+                  </li>
+                  <li>
+                    <i className="fa fa-check-circle"></i>
+                    Travel and Tour
+                  </li>
+                  <li>
+                    <i className="fa fa-check-circle"></i>
+                    Passport, Visa and Document Assistance
+                  </li>
+                  <li>
+                    <i className="fa fa-check-circle"></i>
+                    Manpower Service
+                  </li>
+                  <li>
+                    <i className="fa fa-check-circle"></i>
+                    Document Translation and Interpreter
+                  </li>
+                </ul>
+                <div className="button-wrap">
+                  <div className="main-header__info-phone">
+                    <i className="pylon-icon-tech-support"></i>
+                    <div className="main-header__info-phone-content">
+                      <span>Call US</span>
+                      <h3>
+                        <a href={contactInfo.phone.link}>
+                          {contactInfo.phone.value}
+                        </a>
+                      </h3>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="call-to-action">
+        <div className="container">
+          <div className="left-content">
+            <h3>Need Help?</h3>
+          </div>
+          <div className="right-content">
+            <a href="/contact-us" className="thm-btn">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="service-one__home-two">
+        <div className="container">
+          <div className="block-title text-center">
+            <p>What We’re Offering</p>
+            <h2>All Services</h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {servicesData.map((service) => {
+              return (
+                <div
+                  className="service-second lg:basis-[calc(33%-16px)] basis-full"
+                  key={service.id}
+                >
+                  <div className="service-second-info-icon">
+                    <div className="service-icon2">
+                      <Image src={service.icon} alt="" width={50} height={50} />
+                    </div>
+                    <h3>
+                      <a href={`services/${service.link}`}>{service.title}</a>
+                    </h3>
+                  </div>
+                  <div className="service-second__content">
+                    <a
+                      href={`services/${service.link}`}
+                      className="service-two__card-link"
+                    >
+                      <i className="pylon-icon pylon-icon-right-arrow"></i>Read
+                      More
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <LogoSection data={logosData} />
+
+      <section className="faq-one">
+        <div
+          className="faq-one__bg"
+          style={{
+            backgroundImage: `url(/images/shapes/trust-bg-1-1.png)`,
+          }}
+        />
+        <div className="container">
+          <div className="grid lg:grid-cols-2">
+            <div>
+              <div className="faq-one__content">
+                <div className="block-title text-left">
+                  <p>Frequently Asked Questions </p>
+                  <h2>Most of the People Trust on Us For Fast Services</h2>
+                </div>
+              </div>
+            </div>
+            <div>
+              <ul id="accordion" className="space-y-4">
+                {faqData.map((faq) => (
+                  <li key={faq.id} className="border-b border-gray-200">
+                    <h2
+                      className={`para-title cursor-pointer ${
+                        activeId === faq.id ? "active" : ""
+                      }`}
+                      onClick={() =>
+                        setActiveId(activeId === faq.id ? "" : faq.id)
+                      }
+                    >
+                      <span className="flex items-center gap-2">
+                        <i
+                          className={`fas ${
+                            activeId === faq.id ? "fa-minus" : "fa-plus"
+                          }`}
+                        ></i>
+                        {faq.question}
+                      </span>
+                    </h2>
+                    <div
+                      className={`transition-all duration-300 overflow-hidden ${
+                        activeId === faq.id ? "max-h-40" : "max-h-0"
+                      }`}
+                    >
+                      <p className="text-gray-600">{faq.answer}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <TeamSection />
+    </>
   );
 }

@@ -1,16 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { contactInfo } from "../(main)/data";
 import Link from "next/link";
 
 const Footer = () => {
-  const pathname = usePathname();
-  const isHomePage = pathname === "/";
-
-  if (isHomePage) return;
-
   return (
     <>
       <footer className="site-footer">

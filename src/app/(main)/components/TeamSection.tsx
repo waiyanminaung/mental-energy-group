@@ -3,7 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { teamMembersData } from "../../data";
+import { teamMembersData } from "../data";
 
 const TeamSection = () => {
   return (
