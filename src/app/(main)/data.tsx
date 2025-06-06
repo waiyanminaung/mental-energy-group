@@ -2,40 +2,36 @@ export const servicesData = [
   {
     id: 1,
     title: "Medical Tourism",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "medical-tourism",
     icon: "/images/services/icons/medical.svg",
   },
   {
     id: 2,
     title: "Travel & Tour",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "travel-and-tour",
     icon: "/images/services/icons/travel.svg",
   },
   {
     id: 3,
     title: "Manpower",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "manpower",
     icon: "/images/services/icons/manpower.svg",
   },
   {
     id: 4,
-    title: "Passport, Vsia & Document",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
+    title: "Passport, Vsia & Docs",
+    link: "passport-visa-documents",
+    icon: "/images/services/icons/passport.svg",
+  },
+  {
+    id: 4,
+    title: "Real Estate",
     link: "real-estate",
     icon: "/images/services/icons/realestate.svg",
   },
   {
     id: 5,
     title: "Other Services",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "other",
     icon: "/images/services/icons/other.svg",
   },

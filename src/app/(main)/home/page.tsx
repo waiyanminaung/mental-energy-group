@@ -76,23 +76,23 @@ export default function HomePage() {
                 <ul className="list-unstyled about-two__list">
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Medical Tourism Support
+                    Medical Tourism Assistance
                   </li>
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Comprehensive travel planning and support
+                    Travel and Tour
                   </li>
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Property sales, purchases, and rental assistance
+                    Passport, Visa and Document Assistance
                   </li>
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Passport and visa application support
+                    Manpower Service
                   </li>
                   <li>
                     <i className="fa fa-check-circle"></i>
-                    Professional interpretation and job recruitment assistance
+                    Document Translation and Interpreter
                   </li>
                 </ul>
                 <div className="button-wrap">

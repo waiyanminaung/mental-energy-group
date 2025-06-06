@@ -13,7 +13,7 @@ import { sendMail } from "@/lib/sendmail";
 import { renderEmail } from "@/lib/renderEmail";
 import { OtherServicesTemplate } from "@/app/components/email/OtherServicesTemplate";
 
-const otherServicesFormSchema = yup.object({
+const passportVisaFormSchema = yup.object({
   name: yup.string().required("Name is required"),
   email: emailValidation.required("Email is required"),
   nationality: yup.string().required("Nationality is required"),
@@ -21,19 +21,17 @@ const otherServicesFormSchema = yup.object({
   message: yup.string(),
 });
 
-export type OtherServicesFormDto = yup.InferType<
-  typeof otherServicesFormSchema
->;
+export type PassportVisaFormDto = yup.InferType<typeof passportVisaFormSchema>;
 
-const OtherServicesFormModal = ({ closeModal }: ModalProps) => {
+const PassportVisaFormModal = ({ closeModal }: ModalProps) => {
   const methods = useForm({
-    resolver: yupResolver(otherServicesFormSchema),
+    resolver: yupResolver(passportVisaFormSchema),
   });
 
   const loading = methods.formState.isSubmitting;
 
-  const onSubmit = async (data: OtherServicesFormDto) => {
-    const subject = "New Enquiry for [Other Services]";
+  const onSubmit = async (data: PassportVisaFormDto) => {
+    const subject = "New Enquiry for [Passport, Visa & Documents]";
 
     const { error } = await sendMail({
       email: data.email,
@@ -115,4 +113,4 @@ const OtherServicesFormModal = ({ closeModal }: ModalProps) => {
   );
 };
 
-export default OtherServicesFormModal;
+export default PassportVisaFormModal;
