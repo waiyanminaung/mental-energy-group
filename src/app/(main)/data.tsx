@@ -1,6 +1,6 @@
 export const servicesData = [
   {
-    id: 2,
+    id: 1,
     title: "Medical Tourism",
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
@@ -8,15 +8,7 @@ export const servicesData = [
     icon: "/images/services/icons/medical.svg",
   },
   {
-    id: 1,
-    title: "Manpower Services",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
-    link: "manpower",
-    icon: "/images/services/icons/manpower.svg",
-  },
-  {
-    id: 3,
+    id: 2,
     title: "Travel & Tour",
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
@@ -24,8 +16,16 @@ export const servicesData = [
     icon: "/images/services/icons/travel.svg",
   },
   {
+    id: 3,
+    title: "Manpower",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
+    link: "manpower",
+    icon: "/images/services/icons/manpower.svg",
+  },
+  {
     id: 4,
-    title: "Real Estate",
+    title: "Passport, Vsia & Document",
     description:
       "lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia",
     link: "real-estate",
@@ -46,21 +46,24 @@ export const sliderData = [
     id: 1,
     title: "Medical Tourism & Travel Support",
     subtitle: "Seamless Medical Journeys",
-    image: "/images/main-slider/medical-tourism.jpg",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/main-slider%2Fmedical-tourism.jpg?alt=media&token=6e21bd19-7d25-44db-9f23-cc7a3dd51e4b",
     link: "/services/medical-tourism",
   },
   {
     id: 2,
     title: "Visa, Passport & Embassy Assistance",
     subtitle: "Expert Help with Official Documents",
-    image: "/images/main-slider/visa.jpg",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/main-slider%2Fvisa.jpg?alt=media&token=7a5097fd-5264-4840-aa04-ef4652a23a5a",
     link: "/services/other",
   },
   {
     id: 3,
     title: "Real Estate & Work Permit Solutions",
     subtitle: "Trusted & Secure Agent",
-    image: "/images/main-slider/real-estate.jpg",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/main-slider%2Freal-estate.jpg?alt=media&token=c4cafd7b-9a8d-49b8-ae86-90b2cb079d0c",
     link: "/services/real-estate",
   },
 ];
@@ -90,18 +93,24 @@ export const highlightData = [
 ];
 
 export const logosData = [
-  "/images/partners/Vimut.png",
-  "/images/partners/Med-Park.png",
-  "/images/partners/Bumrungrad-International-Hospital.png",
-  "/images/partners/Bangkok-Hospital.jpeg",
-  "/images/partners/BNH.jpg",
-  "/images/partners/BIDH.png",
-  "/images/partners/Rutnin-Eye-Hospital.png",
-  "/images/partners/Bangkok-Eye.jpg",
-  "/images/partners/masterpiece.jpg",
-  "/images/partners/lelux.jpg",
-  "/images/partners/Asia.jpg",
-  "/images/partners/kamol.jpg",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fluxplanet.jpg?alt=media&token=53fbc295-0b09-41e7-b9e3-e7c5883519cd",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fojsat.jpg?alt=media&token=7a3f9286-8fdb-482f-a23d-146886effc72",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fnozomi-manpower.jpg?alt=media&token=83d83925-19a7-4061-92c1-9a9c3f90c91b",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fintercare-nusing-school.jpg?alt=media&token=cc228dbb-86b7-402f-a69a-308b5b87b1e4",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fpathumthani-university.jpg?alt=media&token=8b3e107a-33a0-40aa-9a7b-94a5a4ff2b99",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FVimut.png?alt=media&token=eb584f4d-ab28-4f8c-b038-8c40d933ff5c",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FMed-Park.png?alt=media&token=d1ff36df-b6d2-43f2-80db-7dd6a5a2a23e",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FBumrungrad-International-Hospital.png?alt=media&token=c9ab191d-91da-4534-a43d-e2da5092e1e6",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FBangkok-Hospital.jpeg?alt=media&token=d5523e79-9d33-4c37-88a4-caacdc7febf8",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FBNH.jpg?alt=media&token=cac1cb91-5440-401d-bbc7-3e3a2bdba229",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FBIDH.png?alt=media&token=4dbf46a5-1d6a-4915-baf9-8068795652f3",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FRutnin-Eye-Hospital.png?alt=media&token=cc35a367-3afd-481b-a0be-3bb7d8e85f90",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FBangkok-Eye.jpg?alt=media&token=af1ecc13-7557-4fef-bc6e-889865f001e0",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fmasterpiece.jpg?alt=media&token=2cc97c3b-4b9a-42ac-ab04-7d5749a2cc85",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Flelux.jpg?alt=media&token=fc4d2ab1-89d7-4a9e-91a8-3ae67d5ca5e4",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2FAsia.jpg?alt=media&token=117a1d92-84a4-443b-b6a1-aaf8427ffc89",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fkamol.jpg?alt=media&token=51097d17-88db-4851-afe1-1e36b55cd984",
+  "https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/partners%2Fbangkok-business-and-law.jpg?alt=media&token=0c9637f5-c3db-406a-83e3-9635512d8917",
 ];
 
 export const faqData = [
@@ -284,7 +293,7 @@ export const teamMembersData = [
     id: 2,
     name: "Ko Si Thu Tun",
     role: "Operation Manager",
-    image: "/images/team/team2.jpg",
+    image: "/images/team/Si-Thu-Tun.jpg",
     social: {
       facebook: "#",
       twitter: "#",
