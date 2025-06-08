@@ -98,15 +98,6 @@ const Header = () => {
               <li>
                 <button
                   type="button"
-                  onClick={() => mobileMenuClick("/home")}
-                  className="block py-2 text-[#b0c2d7] hover:text-[#dbb481]"
-                >
-                  Home
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
                   onClick={() => mobileMenuClick("/services")}
                   className="block py-2 text-[#b0c2d7] hover:text-[#dbb481]"
                 >
