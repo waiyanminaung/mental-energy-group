@@ -95,7 +95,7 @@ export default function MedicalTourismPage() {
       <EntryServiceBanner
         title="World-Class Medical Care in Thailand"
         description="Experience Thailand's premier healthcare facilities with internationally accredited hospitals and skilled medical professionals"
-        image="/images/main-slider/medical-tourism.jpg"
+        image="https://firebasestorage.googleapis.com/v0/b/portfolio-56baf.appspot.com/o/main-slider%2Fmedical-tourism.jpg?alt=media&token=6e21bd19-7d25-44db-9f23-cc7a3dd51e4b"
       />
 
       <HospitalAnnouncementSection />
