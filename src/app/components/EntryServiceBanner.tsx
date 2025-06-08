@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ReactNode } from "react";
 
 export default function EntryServiceBanner({
   title,
@@ -6,7 +7,7 @@ export default function EntryServiceBanner({
   image,
 }: {
   title: string;
-  description: string;
+  description: string | ReactNode;
   image: string;
 }) {
   return (
