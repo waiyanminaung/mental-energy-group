@@ -25,7 +25,7 @@ const Header = () => {
         <nav className="main-menu main-menu__two">
           <div className="container md:py-5 py-3.5">
             <div className="logo-box">
-              <a href="/home" aria-label="logo image">
+              <Link href="/" aria-label="logo image">
                 <Image
                   src="/images/logo.png"
                   width={80}
@@ -33,7 +33,7 @@ const Header = () => {
                   className="lg:size-20 size-16"
                   alt=""
                 />
-              </a>
+              </Link>
               <span
                 className={`fa fa-bars mobile-nav__toggler ${
                   mobileNavVisible ? "mobile-nav__toggler--active" : ""
