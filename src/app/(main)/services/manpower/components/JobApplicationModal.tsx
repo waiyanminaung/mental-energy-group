@@ -12,6 +12,8 @@ import { RHFSelect } from "@/app/components/rhf/rhf-select";
 import { sendMail } from "@/lib/sendmail";
 import { JobEmailTemplate } from "@/app/components/email/JobTemplate";
 import { renderEmail } from "@/lib/renderEmail";
+import { FileValue, RHFFile } from "@/app/components/rhf/rhf-file";
+import { fileToBase64 } from "@/utils/fileToBase64";
 
 const jobApplySchema = yup.object({
   name: yup.string().required("Name is required"),
@@ -32,6 +34,21 @@ const jobApplySchema = yup.object({
       : schema.optional();
   }),
   salary: yup.string().required("Salary is required"),
+  cv: yup
+    .mixed<FileValue>()
+    .required("(CV/Resume) is required")
+    .test("fileSize", "File size is too large", (value) => {
+      if (!value) return true;
+      if (!value.file) return true;
+      return value.file.size <= 5 * 1024 * 1024;
+    }),
+  certificate: yup
+    .mixed<FileValue>()
+    .test("fileSize", "File size is too large", (value) => {
+      if (!value) return true;
+      if (!value.file) return true;
+      return value.file.size <= 5 * 1024 * 1024;
+    }),
 });
 
 export type JobApplyDto = yup.InferType<typeof jobApplySchema>;
@@ -44,13 +61,31 @@ const JobApplicationModal = ({ closeModal }: ModalProps) => {
   const loading = methods.formState.isSubmitting;
 
   const onSubmit = async (data: JobApplyDto) => {
+    const attachments = [];
     const subject = "Job Application";
+
+    const cvBase64 = await fileToBase64(data.cv.file);
+    attachments.push({
+      filename: data.cv.file.name,
+      content: cvBase64,
+      encoding: "base64",
+    });
+
+    if (data.certificate) {
+      const certificateBase64 = await fileToBase64(data.certificate.file);
+      attachments.push({
+        filename: data.certificate.file.name,
+        content: certificateBase64,
+        encoding: "base64",
+      });
+    }
 
     const { error } = await sendMail({
       email: data.email,
       subject: subject,
       text: "",
       html: renderEmail(<JobEmailTemplate subject={subject} {...data} />),
+      attachments: attachments,
     });
 
     if (error) {
@@ -245,6 +280,18 @@ const JobApplicationModal = ({ closeModal }: ModalProps) => {
             <RHFInputGroup label="Salary">
               <RHFInput name="salary" />
             </RHFInputGroup>
+
+            <div>
+              <RHFInputGroup label="CV/Resume">
+                <RHFFile name="cv" accept=".docx,.pdf" />
+              </RHFInputGroup>
+            </div>
+
+            <div>
+              <RHFInputGroup label="Certificate">
+                <RHFFile name="certificate" accept=".docx,.pdf" />
+              </RHFInputGroup>
+            </div>
           </div>
 
           <div className="modal-content-footer">

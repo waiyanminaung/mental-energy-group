@@ -32,7 +32,7 @@ export async function sendMail({
       to: "mentalenergygroup@gmail.com",
       subject: subject,
       text: text,
-      cc: ["mgroupnet@gmail.com", "mailbox.waiyanminaung@gmail.com"],
+      cc: ["mgroupnet@gmail.com"],
       html: html ? html : "",
       attachments: attachments || [],
     });

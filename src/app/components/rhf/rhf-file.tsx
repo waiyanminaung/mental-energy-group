@@ -51,6 +51,7 @@ const DefaultImagePreview = ({
           />
           <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-3 transition-opacity">
             <button
+              type="button"
               onClick={openFilePicker}
               className="p-2 bg-white rounded-lg hover:bg-gray-100 transition-colors"
               title="Change Image"
@@ -58,6 +59,7 @@ const DefaultImagePreview = ({
               <Edit01 className="size-5" />
             </button>
             <button
+              type="button"
               onClick={() => onChange(null)}
               className="p-2 bg-white rounded-lg hover:bg-gray-100 transition-colors"
               title="Remove Image"
@@ -113,14 +115,15 @@ const DefaultFilePreview = ({
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">
+            <div className="text-sm font-medium text-gray-900 mb-1">
               {value.file?.name}
-            </p>
-            <p className="text-xs text-gray-500">
+            </div>
+            <div className="text-xs text-gray-500">
               {(value.file?.size / 1024).toFixed(2)} KB
-            </p>
+            </div>
           </div>
           <button
+            type="button"
             onClick={openFilePicker}
             className="px-2 py-1 text-xs bg-primary/20 text-primary rounded-full hover:bg-primary/30 transition-colors cursor-pointer"
           >
@@ -129,6 +132,7 @@ const DefaultFilePreview = ({
         </div>
       ) : (
         <button
+          type="button"
           onClick={openFilePicker}
           className="w-full p-4 border-2 border-dashed rounded-lg flex flex-col items-center gap-2 text-gray-400 hover:text-gray-500 hover:border-gray-500 transition-colors"
         >

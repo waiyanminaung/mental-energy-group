@@ -38,8 +38,8 @@ export default function RealEstatePage() {
       />
 
       <div className="my-10">
-        <div className="grid grid-cols-[1fr_auto_1fr] gap-x-6">
-          <div className="space-y-2 pb-6 border-b border-gray-200">
+        <div className="grid md:grid-cols-[1fr_auto_1fr] gap-x-6">
+          <div className="space-y-2 py-6 border-b border-gray-200">
             <h3 className="text-lg underline">PJ to PJ သက်တမ်းတိုး</h3>
             <ul>
               <li>မှတ်ပုံတင် ရှေ့ နောက် </li>
@@ -61,9 +61,9 @@ export default function RealEstatePage() {
             </div>
           </div>
 
-          <div className="w-[1px] bg-gray-200" />
+          <div className="w-[1px] bg-gray-200 md:block hidden" />
 
-          <div className="space-y-2 pb-6 border-b border-gray-200">
+          <div className="space-y-2 py-6 border-b border-gray-200">
             <h3 className="text-lg underline">Passport CI to PJ ပြောင်း</h3>
             <ul>
               <li>မှတ်ပုံတင် ရှေ့ နောက်</li>
@@ -102,7 +102,7 @@ export default function RealEstatePage() {
             </div>
           </div>
 
-          <div className="w-[1px] bg-gray-200" />
+          <div className="w-[1px] bg-gray-200 md:block hidden" />
 
           <div className="space-y-2 py-6 border-b border-gray-200">
             <h3 className="text-lg underline">Passport CI to CI ပြောင်း</h3>
@@ -141,7 +141,7 @@ export default function RealEstatePage() {
             </div>
           </div>
 
-          <div className="w-[1px] bg-gray-200" />
+          <div className="w-[1px] bg-gray-200 md:block hidden" />
 
           <div className="space-y-2 py-6 border-b border-gray-200">
             <h3 className="text-lg underline">
