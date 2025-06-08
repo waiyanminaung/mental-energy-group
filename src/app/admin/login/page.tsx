@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import { RHFInput, RHFInputGroup } from "@/app/components/rhf";
 import Button from "../components/Button";
 import Image from "next/image";
+import Link from "next/link";
 
 const loginSchema = yup.object({
   email: emailValidation.required("Email is required"),
@@ -41,7 +42,7 @@ export default function LoginPage() {
     <>
       <div className="flex min-h-screen flex-col justify-center items-center px-6 py-12 lg:px-8 relative z-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <a href="/home" aria-label="logo image">
+          <Link href="/" aria-label="logo image">
             <Image
               src="/images/logo.png"
               width={80}
@@ -49,7 +50,7 @@ export default function LoginPage() {
               className="lg:size-20 size-16 mx-auto"
               alt=""
             />
-          </a>
+          </Link>
           <h2 className="mt-5 text-center text-2xl/9 font-bold tracking-tight text-white">
             Sign in to your account
           </h2>

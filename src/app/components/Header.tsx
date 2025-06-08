@@ -43,7 +43,7 @@ const Header = () => {
             </div>
             <ul className="main-menu__list hidden lg:flex">
               <li>
-                <Link href="/home">Home</Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
                 <Link href="/services">Services</Link>
