@@ -170,7 +170,7 @@ export const contactInfoData = [
   {
     icon: "/icons/whatsapp.svg",
     label: "WhatsApp",
-    description: "Reach us by phone",
+    description: "Reach us by whatsapp",
     value: contactInfo.phone.value,
     link: contactInfo.phone.link,
     iconColor: "text-red-500",
