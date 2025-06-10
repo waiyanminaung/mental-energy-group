@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function ContactInfoSection() {
   return (
     <div className="bg-white">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {contactInfoData.map((item, index) => (
           <div
             key={index}

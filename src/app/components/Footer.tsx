@@ -92,9 +92,16 @@ const Footer = () => {
           <div className="bottom-footer__social">
             <a
               href={contactInfo.facebook.link}
-              className="fab fa-facebook-f"
+              className="fab fa-facebook-f !text-lg"
             ></a>
-            <a href={contactInfo.line.link} className="fab fa-line"></a>
+            <a
+              href={contactInfo.line.link}
+              className="fab fa-line !text-lg"
+            ></a>
+            <a
+              href={contactInfo.whatsapp.link}
+              className="fab fa-whatsapp !text-lg"
+            ></a>
           </div>
         </div>
       </div>

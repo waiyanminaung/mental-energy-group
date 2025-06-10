@@ -132,8 +132,8 @@ export const faqData = [
 
 export const contactInfo = {
   phone: {
-    value: "+66 123 456 789",
-    link: "tel:+66 123 456 789",
+    value: "+66 90 639 4022",
+    link: "tel:+66906394022",
   },
   email: {
     value: "mentalenergygroup@gmail.com",
@@ -152,6 +152,10 @@ export const contactInfo = {
     value: "springsoul99",
     link: `https://line.me/R/ti/p/~springsoul99`,
   },
+  whatsapp: {
+    value: "+66 90 639 4022",
+    link: "https://wa.me/+66906394022",
+  },
 };
 
 export const contactInfoData = [
@@ -162,6 +166,14 @@ export const contactInfoData = [
     value: contactInfo.line.value,
     link: contactInfo.line.link,
     iconColor: "text-green-500",
+  },
+  {
+    icon: "/icons/whatsapp.svg",
+    label: "WhatsApp",
+    description: "Reach us by phone",
+    value: contactInfo.phone.value,
+    link: contactInfo.phone.link,
+    iconColor: "text-red-500",
   },
   {
     icon: "/icons/mail.svg",
