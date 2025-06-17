@@ -52,6 +52,7 @@ const TeamSection = () => {
           modules={[Navigation, Autoplay]}
           spaceBetween={30}
           slidesPerView={3}
+          loop={true}
           navigation={{
             nextEl: "#team-home__swiper-button-next",
             prevEl: "#team-home__swiper-button-prev",

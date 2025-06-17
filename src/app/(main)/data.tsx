@@ -299,6 +299,18 @@ export const teamMembersData = [
   },
   {
     id: 2,
+    name: "Shun Lae Win",
+    role: "Translator/Interpreter (Thai-Myanmar)",
+    image: "/images/team/Shun-Lae-Win.jpg",
+    social: {
+      facebook: "#",
+      twitter: "#",
+      pinterest: "#",
+      instagram: "#",
+    },
+  },
+  {
+    id: 3,
     name: "Ko Si Thu Tun",
     role: "Operation Manager",
     image: "/images/team/Si-Thu-Tun.jpg",
