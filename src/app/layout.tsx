@@ -33,6 +33,23 @@ export const metadata: Metadata = {
     title: "Webo",
   },
   manifest: "/favicon/site.webmanifest",
+  openGraph: {
+    title: "Mental Energy Group",
+    description:
+      "We provide medical tourism support, visa and passport assistance, work permits, and real estate services — making your travel and relocation simple and stress-free",
+    url: "https://mentalenergygroup.com",
+    siteName: "Mental Energy Group",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mental Energy Group",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
