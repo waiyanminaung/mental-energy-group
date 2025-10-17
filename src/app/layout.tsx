@@ -21,6 +21,18 @@ export const metadata: Metadata = {
   title: "Mental Energy Group",
   description:
     "We provide medical tourism support, visa and passport assistance, work permits, and real estate services — making your travel and relocation simple and stress-free",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: [{ url: "/favicon/apple-icon.png", sizes: "180x180" }],
+  },
+  appleWebApp: {
+    title: "Webo",
+  },
+  manifest: "/favicon/site.webmanifest",
 };
 
 export default function RootLayout({
